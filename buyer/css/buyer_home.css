@@ -1,0 +1,69 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    line-height: 1.6;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-top: 20px;
+}
+
+p {
+    text-align: center;
+    color: #555;
+    font-size: 18px;
+}
+
+table {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+td {
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+a {
+    display: inline-block;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+a:hover {
+    transform: scale(1.03);
+}
+
+a[href="buyer_login.php"] {
+    background-color: #4CAF50;
+}
+
+a[href="buyer_login.php"]:hover {
+    background-color: #45a049;
+}
+
+a[href="buyer_registration.php"] {
+    background-color: #f44336;
+}
+
+a[href="buyer_registration.php"]:hover {
+    background-color: #d32f2f;
+}
+
+a[href="../../index.php"] {
+    background-color: #333;
+}
+
+a[href="../../index.php"]:hover {
+    background-color: #555;
+}

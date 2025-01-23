@@ -1,0 +1,94 @@
+/* Selector for table elements */
+table.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    border: 2px solid #4CAF50;
+}
+
+table.custom-table th, table.custom-table td {
+    padding: 15px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+table.custom-table th {
+    background-color: #4CAF50;
+    color: #fff;
+}
+
+/* Selector for input elements */
+input.custom-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+input.custom-input:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+    outline: none;
+}
+
+/* Selector for button elements */
+button.custom-button {
+    background-color: #333;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button.custom-button:hover {
+    background-color: #555;
+    transform: scale(1.03);
+}
+
+/* Selector for h1 elements */
+h1.custom-heading {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Selector for p elements */
+p.custom-paragraph {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Box model properties */
+.box-model-example {
+    margin: 20px;
+    padding: 20px;
+    border: 2px solid #4CAF50;
+    background-color: #f9f9f9;
+}
+
+/* Positioning properties */
+.positioning-example {
+    position: relative;
+    top: 10px;
+    left: 10px;
+    width: 200px;
+    height: 100px;
+    background-color: #4CAF50;
+    color: #fff;
+    text-align: center;
+    line-height: 100px;
+}
