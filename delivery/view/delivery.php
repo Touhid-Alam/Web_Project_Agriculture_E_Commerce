@@ -79,8 +79,8 @@
     <button type="submit" class="register-button">Register as Delivery Man</button>
 </form>
 <div class="center-buttons">
-    <a href="../../layout/view/login.php" class="login-button">Go to login</a>
-    <a href="../../layout/view/homepage.php" class="back-button">Go to Home</a>
+    <a href="delivery_login.php" class="login-button">Go to login</a>
+    <a href="deliver_home.php" class="back-button">Go to delivery Home</a>
 </div>
 <script src="../js/delivery_reg.js"></script>
 </body>

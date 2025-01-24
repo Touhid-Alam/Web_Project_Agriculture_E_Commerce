@@ -11,6 +11,10 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
+SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT;
+SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS;
+SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION;
+
 CREATE DATABASE IF NOT EXISTS `project` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `project`;
 
@@ -20,7 +24,7 @@ USE `project`;
 -- Table structure for table `account`
 --
 
-CREATE TABLE `account` (
+CREATE TABLE IF NOT EXISTS `account` (
   `AccountID` int(11) NOT NULL,
   `username` varchar(100) NOT NULL,
   `usertype` varchar(100) DEFAULT NULL,
@@ -126,8 +130,8 @@ CREATE TABLE `messagebox` (
 --
 
 CREATE TABLE `orderedproduct` (
-  `order_id` varchar(100) NOT NULL,
-  `pid` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL,  -- Ensure this matches the data type of `OID` in `orders`
+  `pid` int(11) NOT NULL,       -- Ensure this matches the data type of `PID` in `product`
   `quantity` int(11) DEFAULT NULL,
   `price` decimal(10,2) DEFAULT NULL,
   `seller_username` varchar(100) DEFAULT NULL
@@ -199,14 +203,12 @@ ALTER TABLE `orderedproduct`
 --
 -- Indexes for table `orders`
 --
-ALTER TABLE `orders`
-  ADD PRIMARY KEY (`OID`);
 
 --
 -- Indexes for table `product`
 --
-ALTER TABLE `product`
-  ADD PRIMARY KEY (`PID`);
+-- ALTER TABLE `product`
+--   ADD PRIMARY KEY (`PID`);
 
 --
 -- Constraints for dumped tables

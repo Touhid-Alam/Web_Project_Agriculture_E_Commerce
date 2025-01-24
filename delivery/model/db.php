@@ -27,12 +27,9 @@ class mydb {
         return $connobject->query($query);
     }
 
-    // Function to check delivery login credentials and handle sessionss
+    // Function to check delivery login credentials
     function checkDeliveryLogin($username, $password, $connobject) {
-        // SQL query to check the delivery person's credentials
         $query = "SELECT * FROM deliveryman WHERE DeliveryUsername = '$username' AND Password = '$password'";
-
-        // Execute the query
         $result = $connobject->query($query);
 
         if ($result && $result->num_rows === 1) {
@@ -72,6 +69,33 @@ class mydb {
             }
         }
         return $deliveries; // Return the array of deliveries found
+    }
+    
+    // Function to fetch pending orders for a specific deliveryman
+    function getPendingOrdersForDeliveryman($deliveryUsername, $connobject) {
+        $query = "SELECT * FROM orders WHERE DeliveryUsername = '$deliveryUsername'";
+        $result = $connobject->query($query);
+        $orders = [];
+        if ($result) {
+            while ($row = $result->fetch_assoc()) {
+                $orders[] = $row;
+            }
+        }
+        return $orders;
+    }
+    
+    public function assignOrderToDelivery($orderId, $deliveryUsername, $conn) {
+        $sql = "UPDATE orders SET DeliveryUsername = ? WHERE OID = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("si", $deliveryUsername, $orderId);
+        return $stmt->execute();
+    }
+
+    public function updateDeliveryStatus($orderId, $status, $conn) {
+        $sql = "UPDATE orders SET status = ? WHERE OID = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("si", $status, $orderId);
+        return $stmt->execute();
     }
     
 }

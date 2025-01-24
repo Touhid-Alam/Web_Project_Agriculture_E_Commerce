@@ -8,6 +8,11 @@ if (!isset($_SESSION['username'])) {
     header("Location: delivery_login.php");
     exit;
 }
+
+$db = new mydb();
+$conn = $db->openCon();
+$pendingOrders = $db->getPendingOrdersForDeliveryman($_SESSION['username'], $conn);
+$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -71,6 +76,38 @@ if (!isset($_SESSION['username'])) {
         </table>
     <?php elseif ($showTable): ?>
         <p>No delivery profiles found.</p>
+    <?php endif; ?>
+
+    <h2>Pending Orders</h2>
+    <?php if (!empty($pendingOrders)): ?>
+        <form method="post">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Buyer Username</th>
+                        <th>Total Price</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($pendingOrders as $order): ?>
+                        <tr>
+                            <td><?php echo htmlspecialchars($order['OID']); ?></td>
+                            <td><?php echo htmlspecialchars($order['BuyerUsername']); ?></td>
+                            <td><?php echo htmlspecialchars($order['TotalPrice']); ?></td>
+                            <td>
+                                <input type="checkbox" name="status" <?php echo isset($order['status']) && $order['status'] === 'completed' ? 'checked' : ''; ?>>
+                                <input type="hidden" name="order_id" value="<?php echo htmlspecialchars($order['OID']); ?>">
+                                <button type="submit">Update Status</button>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </form>
+    <?php else: ?>
+        <p>No pending orders found.</p>
     <?php endif; ?>
 
     <a href="../control/delivery_session_destroy.php">Logout</a>

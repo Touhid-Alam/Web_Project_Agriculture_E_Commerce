@@ -33,5 +33,39 @@ if ($showTable) {
     }
 }
 
+// Handle order assignment
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['order_id']) && isset($_POST['delivery_username'])) {
+    $orderId = trim($_POST['order_id']);
+    $deliveryUsername = trim($_POST['delivery_username']);
+
+    $result = $db->assignOrderToDelivery($orderId, $deliveryUsername, $conn);
+
+    if ($result) {
+        $_SESSION['success_message'] = "Order assigned successfully.";
+    } else {
+        $_SESSION['error_message'] = "Failed to assign order.";
+    }
+
+    header("Location: ../view/employee_profile.php");
+    exit();
+}
+
+// Handle delivery status update
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['order_id']) && isset($_POST['status'])) {
+    $orderId = trim($_POST['order_id']);
+    $status = $_POST['status'] === 'on' ? 'completed' : 'pending';
+
+    $result = $db->updateDeliveryStatus($orderId, $status, $conn);
+
+    if ($result) {
+        $_SESSION['success_message'] = "Delivery status updated successfully.";
+    } else {
+        $_SESSION['error_message'] = "Failed to update delivery status.";
+    }
+
+    header("Location: ../view/employee_profile.php");
+    exit();
+}
+
 $conn->close();
 ?>

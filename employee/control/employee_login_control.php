@@ -18,8 +18,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if ($loginSuccess) {
         $_SESSION['username'] = $username;
-        // Redirect to the employee dashboard or profile page
-        header("Location: ../view/employee_profile.php");
+        // Redirect to the employee profile control page
+        header("Location: employee_profile_control.php");
         exit();
     } else {
         // Set an error message for invalid credentials

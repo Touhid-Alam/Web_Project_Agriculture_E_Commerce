@@ -14,6 +14,10 @@ $conn = $db->openCon();
 
 $employeeDetails = $db->getEmployeeProfile($_SESSION['username'], $conn);
 $pendingOrders = $db->getPendingOrders($conn);
+$deliverymen = [];
+if (!empty($pendingOrders)) {
+    $deliverymen = $db->getAllDeliveries($conn);
+}
 
 $conn->close();
 ?>
@@ -82,9 +86,15 @@ $conn->close();
                     <td><?php echo htmlspecialchars($order['BuyerUsername']); ?></td>
                     <td><?php echo htmlspecialchars($order['TotalPrice']); ?></td>
                     <td>
-                        <form action="../control/delivery_profile_control.php" method="POST">
+                        <form action="../control/employee_profile_control.php" method="POST">
                             <input type="hidden" name="order_id" value="<?php echo htmlspecialchars($order['OID']); ?>">
-                            <input type="text" name="DeliveryUsername" placeholder="Delivery Username" >
+                            <select name="DeliveryUsername">
+                                <?php foreach ($deliverymen as $deliveryman): ?>
+                                    <option value="<?php echo htmlspecialchars($deliveryman['DeliveryUsername']); ?>">
+                                        <?php echo htmlspecialchars($deliveryman['DeliveryUsername']); ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
                             <button type="submit">Assign</button>
                         </form>
                     </td>
