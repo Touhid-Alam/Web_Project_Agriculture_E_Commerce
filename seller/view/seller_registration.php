@@ -16,6 +16,8 @@ if (isset($_SESSION['registration_error'])) {
     echo$_SESSION['registration_error'];
     unset($_SESSION['registration_error']);
 }
+session_unset();
+session_destroy();
 ?>
 
 <form action="../control/seller_reg_control.php" method="POST" enctype="multipart/form-data" onsubmit="return validation()">

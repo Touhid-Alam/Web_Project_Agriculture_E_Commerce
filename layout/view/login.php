@@ -5,11 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Agriculture E-Commerce System</title>
     <script src="../js/login_validation.js"></script>
+
 </head>
 <body>
     <h1>Login</h1>
     <?php
     session_start();
+    if (isset($_SESSION['username'])) {
+        session_unset();
+        session_destroy();
+    }
     if (isset($_SESSION['login_error'])) {
         echo $_SESSION['login_error'];
         unset($_SESSION['login_error']);

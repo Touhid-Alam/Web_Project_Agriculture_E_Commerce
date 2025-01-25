@@ -1,3 +1,9 @@
+<?php
+session_start();
+session_unset();
+session_destroy();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +15,8 @@
     <h1>Registration</h1>
     <p>Select an option below:</p>
     <br>
+
+
 
     <table>
         <tr>
