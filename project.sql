@@ -46,7 +46,8 @@ CREATE TABLE `admin` (
   `Email` varchar(100) NOT NULL,
   `Password` varchar(100) NOT NULL,
   `Fullname` varchar(100) DEFAULT NULL,
-  `NID` varchar(100) DEFAULT NULL
+  `NID` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`AdminUsername`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -66,7 +67,8 @@ CREATE TABLE `buyer` (
   `Fullname` varchar(100) DEFAULT NULL,
   `Phone` varchar(100) DEFAULT NULL,
   `DateOfBirth` varchar(100) DEFAULT NULL,
-  `AccountID` int(11) DEFAULT NULL
+  `AccountID` int(11) DEFAULT NULL,
+  PRIMARY KEY (`BuyerUsername`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -86,7 +88,8 @@ CREATE TABLE `deliveryman` (
   `Phone` varchar(100) DEFAULT NULL,
   `Vehicle` varchar(100) DEFAULT NULL,
   `CV` varchar(100) DEFAULT NULL,
-  `Age` int(11) DEFAULT NULL
+  `Age` int(11) DEFAULT NULL,
+  PRIMARY KEY (`DeliveryUsername`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -107,7 +110,8 @@ CREATE TABLE `employee` (
   `Phone` varchar(100) DEFAULT NULL,
   `WorkShift` varchar(100) DEFAULT NULL,
   `CV` varchar(100) DEFAULT NULL,
-  `Age` int(11) DEFAULT NULL
+  `Age` int(11) DEFAULT NULL,
+  PRIMARY KEY (`EmployeeUsername`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -186,7 +190,8 @@ CREATE TABLE `seller` (
   `Address` varchar(100) DEFAULT NULL,
   `District` varchar(100) DEFAULT NULL,
   `NID` varchar(100) DEFAULT NULL,
-  `AccountID` int(11) DEFAULT NULL
+  `AccountID` int(11) DEFAULT NULL,
+  PRIMARY KEY (`SellerUsername`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -220,6 +225,20 @@ ALTER TABLE `orderedproduct`
 ALTER TABLE `orderedproduct`
   ADD CONSTRAINT `orderedproduct_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`OID`) ON DELETE CASCADE,
   ADD CONSTRAINT `orderedproduct_ibfk_2` FOREIGN KEY (`pid`) REFERENCES `product` (`PID`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`BuyerUsername`) REFERENCES `buyer` (`BuyerUsername`) ON DELETE SET NULL,
+  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`DeliveryUsername`) REFERENCES `deliveryman` (`DeliveryUsername`) ON DELETE SET NULL;
+
+--
+-- Constraints for table `product`
+--
+ALTER TABLE `product`
+  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`SellerUsername`) REFERENCES `seller` (`SellerUsername`) ON DELETE SET NULL;
+
 --
 -- Database: `test`
 --
