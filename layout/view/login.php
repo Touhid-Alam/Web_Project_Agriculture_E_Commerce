@@ -11,8 +11,12 @@
     <?php
     session_start();
     if (isset($_SESSION['login_error'])) {
-        echo  $_SESSION['login_error'];
+        echo $_SESSION['login_error'];
         unset($_SESSION['login_error']);
+    }
+    if (isset($_SESSION['registration_success'])) {
+        echo $_SESSION['registration_success'];
+        unset($_SESSION['registration_success']);
     }
     ?>
     <form action="../control/login_control.php" method="POST" onsubmit="return validateLogin()">

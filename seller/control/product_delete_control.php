@@ -3,7 +3,7 @@ session_start();
 include('../model/db.php');
 
 if (!isset($_SESSION['username'])) {
-    header("Location: ../view/seller_login.php");
+    header("Location: ../../layout/view/login.php");
     exit;
 }
 

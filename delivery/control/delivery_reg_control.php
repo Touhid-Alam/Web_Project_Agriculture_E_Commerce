@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     session_start(); // Start session to pass the message
     if ($result) {
         $_SESSION['registration_success'] = "Delivery person registered successfully!";
-        header("Location: ../view/delivery_login.php");
+        header("Location: ../../layout/view/login.php");
         exit;
     } else {
         echo "Failed to register delivery person. Please try again.";
