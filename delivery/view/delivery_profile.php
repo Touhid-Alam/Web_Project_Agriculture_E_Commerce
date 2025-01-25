@@ -1,6 +1,5 @@
 <?php
 session_start();
-include('../model/db.php');
 include('../control/delivery_profile_control.php');
 
 // Ensure the user is logged in
@@ -8,11 +7,6 @@ if (!isset($_SESSION['username'])) {
     header("Location: delivery_login.php");
     exit;
 }
-
-$db = new mydb();
-$conn = $db->openCon();
-$pendingOrders = $db->getPendingOrdersForDeliveryman($_SESSION['username'], $conn);
-$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -70,6 +64,12 @@ $conn->close();
                         <td><?php echo htmlspecialchars($delivery['Vehicle']); ?></td>
                         <td><?php echo !empty($delivery['CV']) ? '<a href="../../' . htmlspecialchars($delivery['CV']) . '" target="_blank">View CV</a>' : 'No CV'; ?></td>
                         <td><?php echo htmlspecialchars($delivery['Age']); ?></td>
+                        <td>
+                            <a href="update_delivery.php?delivery_id=<?php echo htmlspecialchars($delivery['DeliveryUsername']); ?>">Update</a>
+                        </td>
+                        <td>
+                            <a href="delete_delivery.php?delivery_id=<?php echo htmlspecialchars($delivery['DeliveryUsername']); ?>">Delete</a>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

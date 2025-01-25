@@ -14,6 +14,7 @@ $conn = $db->openCon();
 
 $showTable = isset($_SESSION['showTable']) ? $_SESSION['showTable'] : false;
 $deliveries = [];
+$pendingOrders = $db->getPendingOrdersForDeliveryman($_SESSION['username'], $conn);
 
 // Toggle the visibility of the delivery table
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['toggleTable'])) {
@@ -63,7 +64,43 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['order_id']) && isset(
         $_SESSION['error_message'] = "Failed to update delivery status.";
     }
 
-    header("Location: ../view/employee_profile.php");
+    header("Location: ../../view/admin_profile.php");
+    exit();
+}
+
+// Handle delivery profile deletion
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['deleteDelivery'])) {
+    $deliveryId = trim($_POST['delivery_id']);
+    $result = $db->deleteDelivery($deliveryId, $conn);
+
+    if ($result) {
+        $_SESSION['success_message'] = "Delivery profile deleted successfully.";
+    } else {
+        $_SESSION['error_message'] = "Failed to delete delivery profile.";
+    }
+
+    header("Location: ../view/delivery_profile.php");
+    exit();
+}
+
+// Handle delivery profile update
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['updateDelivery'])) {
+    $deliveryId = trim($_POST['delivery_id']);
+    $fullName = trim($_POST['fullName']);
+    $email = trim($_POST['email']);
+    $phone = trim($_POST['phone']);
+    $vehicle = trim($_POST['vehicle']);
+    $age = trim($_POST['age']);
+
+    $result = $db->updateDelivery($deliveryId, $fullName, $email, $phone, $vehicle, $age, $conn);
+
+    if ($result) {
+        $_SESSION['success_message'] = "Delivery profile updated successfully.";
+    } else {
+        $_SESSION['error_message'] = "Failed to update delivery profile.";
+    }
+
+    header("Location: ../view/delivery_profile.php");
     exit();
 }
 

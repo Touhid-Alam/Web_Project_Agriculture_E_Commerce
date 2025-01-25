@@ -97,6 +97,32 @@ class mydb {
         $stmt->bind_param("si", $status, $orderId);
         return $stmt->execute();
     }
+
+    // Function to delete a delivery profile
+    function deleteDelivery($deliveryId, $connobject) {
+        $query = "DELETE FROM deliveryman WHERE DeliveryUsername = ?";
+        $stmt = $connobject->prepare($query);
+        $stmt->bind_param("s", $deliveryId);
+        return $stmt->execute();
+    }
+
+    // Function to update a delivery profile
+    function updateDelivery($deliveryId, $fullName, $email, $phone, $vehicle, $age, $connobject) {
+        $query = "UPDATE deliveryman SET Fullname = ?, Email = ?, Phone = ?, Vehicle = ?, Age = ? WHERE DeliveryUsername = ?";
+        $stmt = $connobject->prepare($query);
+        $stmt->bind_param("ssssss", $fullName, $email, $phone, $vehicle, $age, $deliveryId);
+        return $stmt->execute();
+    }
+
+    // Function to fetch a delivery profile by ID
+    function getDeliveryById($deliveryId, $connobject) {
+        $query = "SELECT * FROM deliveryman WHERE DeliveryUsername = ?";
+        $stmt = $connobject->prepare($query);
+        $stmt->bind_param("s", $deliveryId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    }
     
 }
 ?>
