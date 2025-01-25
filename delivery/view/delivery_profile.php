@@ -80,7 +80,7 @@ if (!isset($_SESSION['username'])) {
 
     <h2>Pending Orders</h2>
     <?php if (!empty($pendingOrders)): ?>
-        <form method="post">
+        <form method="post" action="../control/delivery_profile_control.php">
             <table>
                 <thead>
                     <tr>
@@ -97,9 +97,9 @@ if (!isset($_SESSION['username'])) {
                             <td><?php echo htmlspecialchars($order['BuyerUsername']); ?></td>
                             <td><?php echo htmlspecialchars($order['TotalPrice']); ?></td>
                             <td>
-                                <input type="checkbox" name="status" <?php echo isset($order['status']) && $order['status'] === 'completed' ? 'checked' : ''; ?>>
+                                <input type="checkbox" name="status_<?php echo $order['OID']; ?>" id="status_<?php echo $order['OID']; ?>" <?php echo isset($order['status']) && $order['status'] === 'completed' ? 'checked' : ''; ?> onchange="toggleButtonText(<?php echo $order['OID']; ?>)">
                                 <input type="hidden" name="order_id" value="<?php echo htmlspecialchars($order['OID']); ?>">
-                                <button type="submit">Update Status</button>
+                                <button type="submit" id="button_<?php echo $order['OID']; ?>"><?php echo isset($order['status']) && $order['status'] === 'completed' ? 'Complete' : 'Update Status'; ?></button>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -109,6 +109,18 @@ if (!isset($_SESSION['username'])) {
     <?php else: ?>
         <p>No pending orders found.</p>
     <?php endif; ?>
+
+    <script>
+    function toggleButtonText(orderId) {
+        var checkbox = document.getElementById('status_' + orderId);
+        var button = document.getElementById('button_' + orderId);
+        if (checkbox.checked) {
+            button.textContent = 'Complete';
+        } else {
+            button.textContent = 'Update Status';
+        }
+    }
+    </script>
 
     <a href="../control/delivery_session_destroy.php">Logout</a>
 

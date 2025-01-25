@@ -52,9 +52,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['order_id']) && isset(
 }
 
 // Handle delivery status update
-if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['order_id']) && isset($_POST['status'])) {
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['order_id'])) {
     $orderId = trim($_POST['order_id']);
-    $status = $_POST['status'] === 'on' ? 'completed' : 'pending';
+    $status = isset($_POST['status_' . $orderId]) ? 'completed' : 'pending';
 
     $result = $db->updateDeliveryStatus($orderId, $status, $conn);
 
@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['order_id']) && isset(
         $_SESSION['error_message'] = "Failed to update delivery status.";
     }
 
-    header("Location: ../../view/admin_profile.php");
+    header("Location: ../view/delivery_profile.php");
     exit();
 }
 
