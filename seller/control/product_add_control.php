@@ -27,32 +27,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!in_array($imageFileType, $allowed_extensions)) {
             echo "Sorry, only JPEG, JPG, and PNG files are allowed.";
         } else {
-            // Generate file name as pid_<unique_id>.<extension>
-            // The $pid should be generated dynamically or passed through URL
-            if (isset($_GET['pid'])) {
-                $pid = $_GET['pid'];
-            } else {
-                $pid = uniqid('pid_', true); // If pid is not passed, generate a unique one for new product
-            }
+            $db = new mydb();
+            $conn = $db->openCon();
 
-            // Generate the unique file name for the picture
-            $file_name = "pid_" . $pid . "." . $imageFileType;
+            // Insert the product into the database without the image first
+            $db->addProduct($_SESSION['username'], $PName, $Price, $Quantity, '', $Details, $conn);
+
+            // Get the last inserted product ID
+            $last_id = $conn->insert_id;
+
+            // Generate the unique file name for the picture using the product ID
+            $file_name = "pid_" . $last_id . "." . $imageFileType;
             $target_file = $target_dir . $file_name;
 
             // Move the uploaded file to the target directory
             if (move_uploaded_file($Picture['tmp_name'], $target_file)) {
-                // Insert the product into the database with the generated pid and image
-                $db = new mydb();
-                $conn = $db->openCon();
-
-                // If a product exists, update it, otherwise insert a new product
-                if (isset($_GET['pid'])) {
-                    // Update the existing product
-                    $db->updateProduct($pid, $PName, $Price, $Quantity, $file_name, $Details, $conn);
-                } else {
-                    // Add the new product with a new pid
-                    $db->addProduct($_SESSION['username'], $PName, $Price, $Quantity, $file_name, $Details, $conn);
-                }
+                // Update the product with the image file name
+                $db->updateProduct($last_id, $PName, $Price, $Quantity, $file_name, $Details, $conn);
 
                 // Redirect to the seller profile page after the operation
                 header("Location: ../view/seller_profile.php");

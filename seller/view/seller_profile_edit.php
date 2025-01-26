@@ -26,7 +26,10 @@ include('../control/seller_profile_edit_control.php');
             </tr>
             <tr>
                 <td><label for="Password">Password:</label></td>
-                <td><input type="password" name="Password" id="Password" value="<?php echo htmlspecialchars($seller['Password']); ?>"></td>
+                <td>
+                    <input type="password" name="Password" id="Password" value="<?php echo htmlspecialchars($seller['Password']); ?>">
+                    <input type="checkbox" id="showPassword" onclick="togglePasswordVisibility()"> Show Password
+                </td>
                 <td><p id="PasswordError"></p></td>
             </tr>
         </table>
@@ -37,7 +40,7 @@ include('../control/seller_profile_edit_control.php');
         <table>
             <tr>
                 <td><label for="BusinessName">Business Name:</label></td>
-                <td><input type="text" name="BusinessName" id="BusinessName" value="<?php echo htmlspecialchars($seller['BusinessName']); ?>"></td>
+                <td><textarea name="BusinessName" id="BusinessName" rows="2" cols="30"><?php echo htmlspecialchars($seller['BusinessName']); ?></textarea></td>
                 <td><p id="BusinessNameError"></p></td>
             </tr>
             <tr>
@@ -63,7 +66,7 @@ include('../control/seller_profile_edit_control.php');
             </tr>
             <tr>
                 <td><label for="Address">Address:</label></td>
-                <td><input type="text" name="Address" id="Address" value="<?php echo htmlspecialchars($seller['Address']); ?>"></td>
+                <td><textarea name="Address" id="Address" rows="4" cols="50"><?php echo htmlspecialchars($seller['Address']); ?></textarea></td>
                 <td><p id="AddressError"></p></td>
             </tr>
             <tr>
@@ -85,15 +88,7 @@ include('../control/seller_profile_edit_control.php');
             <tr>
                 <td>Current NID:</td>
                 <td>
-                    <?php if ($seller['NID']): ?>
-                        <?php if (pathinfo($seller['NID'], PATHINFO_EXTENSION) === 'pdf'): ?>
-                            <a href="../../files/<?php echo htmlspecialchars($seller['NID']); ?>" target="_blank">View NID (PDF)</a>
-                        <?php else: ?>
-                            <img src="../../files/<?php echo htmlspecialchars($seller['NID']); ?>" alt="NID" width="100">
-                        <?php endif; ?>
-                    <?php else: ?>
-                        No NID uploaded.
-                    <?php endif; ?>
+                        <a href="../../images<?php echo htmlspecialchars($seller['NID']); ?>" target="_blank">View Current NID</a>
                 </td>
             </tr>
         </table>
@@ -103,6 +98,17 @@ include('../control/seller_profile_edit_control.php');
 </form>
 
 <button onclick="location.href='seller_profile.php'">Go Back</button>
+
+<script>
+function togglePasswordVisibility() {
+    var passwordField = document.getElementById("Password");
+    if (passwordField.type === "password") {
+        passwordField.type = "text";
+    } else {
+        passwordField.type = "password";
+    }
+}
+</script>
 
 </body>
 </html>

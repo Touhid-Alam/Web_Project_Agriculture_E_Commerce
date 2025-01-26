@@ -208,17 +208,22 @@
                           FROM orderedproduct op 
                           JOIN product p ON op.pid = p.PID 
                           JOIN orders o ON op.order_id = o.OID 
-                          WHERE op.seller_username = '$sellerUsername' AND p.PName LIKE '$searchTerm'
-                          ORDER BY p.PName $sortOrder";
-                $result = $connobject->query($query);
-                $productHistory = [];
+                          WHERE op.seller_username = ? AND p.PName LIKE ?";
                 
-                if ($result) {
-                    while ($row = $result->fetch_assoc()) {
-                        $productHistory[] = $row;
-                    }
+                if ($sortOrder === 'asc') {
+                    $query .= " ORDER BY p.PName ASC";
+                } else {
+                    $query .= " ORDER BY p.PName DESC";
                 }
-                
+            
+                $stmt = $connobject->prepare($query);
+                $stmt->bind_param("ss", $sellerUsername, $searchTerm);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $productHistory = [];
+                while ($row = $result->fetch_assoc()) {
+                    $productHistory[] = $row;
+                }
                 return $productHistory;
             }
         

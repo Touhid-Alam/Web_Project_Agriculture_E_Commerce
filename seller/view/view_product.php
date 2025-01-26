@@ -16,6 +16,10 @@ include('../control/product_view_control.php');
     <?php if ($product): ?>
         <table>
             <tr>
+                <td>Product ID:</td>
+                <td><?php echo htmlspecialchars($product['PID']); ?></td>
+            </tr>
+            <tr>
                 <td>Product Name:</td>
                 <td><?php echo htmlspecialchars($product['PName']); ?></td>
             </tr>

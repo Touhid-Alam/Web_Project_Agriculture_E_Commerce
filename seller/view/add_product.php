@@ -16,6 +16,7 @@ include('../control/product_add_control.php');
 <h1>Add a New Product</h1>
 
 <form action="" method="post" enctype="multipart/form-data" onsubmit="return validateProductForm()">
+
     <label for="PName">Product Name</label>
     <input type="text" name="PName" id="PName">
     <p id="PNameError"></p><br>

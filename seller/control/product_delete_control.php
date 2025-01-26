@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 include('../model/db.php');
 
 if (!isset($_SESSION['username'])) {
@@ -7,10 +9,24 @@ if (!isset($_SESSION['username'])) {
     exit;
 }
 
-$pid = $_GET['pid'];
+$sellerUsername = $_SESSION['username'];
 $db = new mydb();
 $conn = $db->openCon();
-$db->deleteProduct($pid, $conn);
+$searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
 
-header("Location: ../view/seller_profile.php");
+if ($searchTerm) {
+    $products = $db->searchProducts($sellerUsername, $searchTerm, $conn);
+} else {
+    $products = $db->getSellerProducts($sellerUsername, $conn);
+}
+
+$conn->close();
+
+if (!empty($products)) {
+    foreach ($products as $product) {
+        // Output product details in a table row
+    }
+} else {
+    echo '<p>No products found.</p>';
+}
 ?>

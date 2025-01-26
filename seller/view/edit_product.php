@@ -15,6 +15,10 @@ include('../control/product_edit_control.php');
     <h1>Edit Product</h1>
 
     <form action="" method="post" enctype="multipart/form-data" onsubmit="return validateProductForm()">
+        <label for="PID">Product ID</label>
+        <input type="text" name="PID" id="PID" value="<?php echo $product['PID']; ?>" readonly>
+        <br><br>
+
         <label for="PName">Product Name</label>
         <input type="text" name="PName" id="PName" value="<?php echo $product['PName']; ?>">
         <p id="PNameError"></p><br>
