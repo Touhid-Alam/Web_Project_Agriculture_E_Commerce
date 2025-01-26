@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Agriculture E-Commerce System</title>
     <script src="../js/login_validation.js"></script>
-
 </head>
 <body>
     <h1>Login</h1>
@@ -58,6 +57,5 @@
     <br>
     
     <button onclick="window.location.href='homepage.php'">Back to Home</button>
-
 </body>
 </html>

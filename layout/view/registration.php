@@ -16,8 +16,6 @@ session_destroy();
     <p>Select an option below:</p>
     <br>
 
-
-
     <table>
         <tr>
             <td><button onclick="location.href='../../buyer/view/buyer_registration.php'">Buyer Registration</button></td>
