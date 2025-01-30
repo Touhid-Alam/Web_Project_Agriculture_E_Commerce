@@ -1,12 +1,19 @@
 <?php
-session_start();
-include('../control/update_delivery_control.php');
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-// Ensure the user is logged in
 if (!isset($_SESSION['username'])) {
     header("Location: delivery_login.php");
     exit;
 }
+
+if (!isset($_SESSION['delivery'])) {
+    header("Location: ../control/update_delivery_control.php?delivery_id=" . $_GET['delivery_id']);
+    exit;
+}
+
+$delivery = $_SESSION['delivery'];
 ?>
 
 <!DOCTYPE html>
@@ -18,29 +25,38 @@ if (!isset($_SESSION['username'])) {
     <link rel="stylesheet" type="text/css" href="../css/deliver_profile.css">
 </head>
 <body>
+    <div class="navbar">
+        <a href="delivery_profile.php">Profile</a>
+        <a href="delivery_orders.php">Orders</a>
+        <a href="delivery_logout.php">Logout</a>
+    </div>
 
-    <h1>Update Delivery Profile</h1>
-
-    <?php if (isset($error)): ?>
-    <?php echo htmlspecialchars($error); ?>
-    <?php endif; ?>
-
-    <form method="post" action="../control/update_delivery_control.php">
-        <input type="hidden" name="delivery_id" value="<?php echo htmlspecialchars($delivery['DeliveryUsername']); ?>">
-        <label for="fullName">Full Name:</label>
-        <input type="text" name="fullName" value="<?php echo htmlspecialchars($delivery['Fullname']); ?>">
-        <label for="email">Email:</label>
-        <input type="text" name="email" value="<?php echo htmlspecialchars($delivery['Email']); ?>">
-        <label for="phone">Phone:</label>
-        <input type="text" name="phone" value="<?php echo htmlspecialchars($delivery['Phone']); ?>">
-        <label for="vehicle">Vehicle:</label>
-        <input type="text" name="vehicle" value="<?php echo htmlspecialchars($delivery['Vehicle']); ?>">
-        <label for="age">Age:</label>
-        <input type="text" name="age" value="<?php echo htmlspecialchars($delivery['Age']); ?>">
-        <button type="submit" name="updateDelivery">Update</button>
-    </form>
-
-    <a href="delivery_profile.php">Back to Profile</a>
-
+    <div class="main-content">
+        <h2>Update Delivery Profile</h2>
+        <form action="../control/update_delivery_control.php" method="POST" class="update-form">
+            <input type="hidden" name="delivery_id" value="<?php echo htmlspecialchars($delivery['DeliveryUsername']); ?>">
+            <div class="profile-item">
+                <label for="fullName"><strong>Full Name:</strong></label>
+                <input type="text" id="fullName" name="fullName" value="<?php echo htmlspecialchars($delivery['Fullname']); ?>" required>
+            </div>
+            <div class="profile-item">
+                <label for="email"><strong>Email:</strong></label>
+                <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($delivery['Email']); ?>" required>
+            </div>
+            <div class="profile-item">
+                <label for="phone"><strong>Phone:</strong></label>
+                <input type="text" id="phone" name="phone" value="<?php echo htmlspecialchars($delivery['Phone']); ?>" required>
+            </div>
+            <div class="profile-item">
+                <label for="vehicle"><strong>Vehicle:</strong></label>
+                <input type="text" id="vehicle" name="vehicle" value="<?php echo htmlspecialchars($delivery['Vehicle']); ?>" required>
+            </div>
+            <div class="profile-item">
+                <label for="age"><strong>Age:</strong></label>
+                <input type="text" id="age" name="age" value="<?php echo htmlspecialchars($delivery['Age']); ?>" required>
+            </div>
+            <button type="submit">Save Changes</button>
+        </form>
+    </div>
 </body>
 </html>

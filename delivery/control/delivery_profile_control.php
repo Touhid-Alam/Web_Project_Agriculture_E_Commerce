@@ -16,6 +16,11 @@ $showTable = isset($_SESSION['showTable']) ? $_SESSION['showTable'] : false;
 $deliveries = [];
 $pendingOrders = $db->getPendingOrdersForDeliveryman($_SESSION['username'], $conn);
 
+// Fetch delivery details if not already set
+if (!isset($_SESSION['deliveryDetails'])) {
+    $_SESSION['deliveryDetails'] = $db->getDeliveryDetails($_SESSION['username'], $conn);
+}
+
 // Toggle the visibility of the delivery table
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['toggleTable'])) {
     $showTable = !$showTable;

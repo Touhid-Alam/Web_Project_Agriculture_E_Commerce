@@ -47,6 +47,12 @@ class mydb {
         return $result->fetch_assoc();
     }
 
+    // Function to update employee profile
+    function updateEmployeeProfile($username, $fullname, $email, $phone, $workshift, $connobject) {
+        $query = "UPDATE employee SET Fullname = '$fullname', Email = '$email', Phone = '$phone', WorkShift = '$workshift' WHERE EmployeeUsername = '$username'";
+        return $connobject->query($query);
+    }
+
     // Function to fetch all employees with a limit
     function viewAllEmployees($connobject, $limit = 100) {
         $query = "SELECT * FROM employee LIMIT $limit";

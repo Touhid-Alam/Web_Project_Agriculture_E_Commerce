@@ -80,3 +80,189 @@ a:hover {
     background-color: #d32f2f;
     transform: scale(1.03);
 }
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f7ed;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+/* Navbar */
+.navbar {
+    width: 200px;
+    background-color: #333;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100vh; /* Full height */
+    position: fixed; /* Fixed position */
+    top: 0;
+    left: 0;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 14px 16px;
+    margin: 5px 0;
+    width: 100%;
+    text-align: left;
+    border-radius: 5px;
+}
+
+.navbar a:hover {
+    font-weight: bold; /* Bold font on hover */
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 250px; /* Adjust for the navbar width and add space */
+    padding: 20px;
+}
+
+h1 {
+    color: #2d572c;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #2d572c;
+    margin-bottom: 10px;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    padding: 8px;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    font-size: 1em;
+    width: 200px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    font-size: 1em;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #2E7D32;
+}
+
+/* Profile Card */
+.profile-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.profile-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.profile-item:last-child {
+    border-bottom: none;
+}
+
+.profile-item strong {
+    color: #2d572c;
+}
+
+.profile-item span {
+    color: #555;
+}
+
+/* Update Form */
+.update-form {
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.update-form .profile-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.update-form .profile-item:last-child {
+    border-bottom: none;
+}
+
+.update-form label {
+    flex: 1;
+    color: #2d572c;
+}
+
+.update-form input {
+    flex: 2;
+    padding: 8px;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.update-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    font-size: 1em;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.update-form button:hover {
+    background-color: #2E7D32;
+}
+
+.logout-container {
+    margin-top: auto;
+    width: 100%;
+}
+
+.logout-button {
+    display: block;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    text-decoration: none;
+}
+
+.logout-button:hover {
+    background-color: #2E7D32;
+}

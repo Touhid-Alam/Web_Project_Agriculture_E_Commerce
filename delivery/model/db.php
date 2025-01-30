@@ -123,6 +123,21 @@ class mydb {
         $result = $stmt->get_result();
         return $result->fetch_assoc();
     }
+
+    // Function to fetch a delivery profile by username
+    function getDeliveryDetails($username, $connobject) {
+        $stmt = $connobject->prepare("SELECT * FROM deliveryman WHERE DeliveryUsername = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    }
     
+    public function deleteOrder($orderId, $conn) {
+        $sql = "DELETE FROM orders WHERE OID = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $orderId);
+        return $stmt->execute();
+    }
 }
 ?>
