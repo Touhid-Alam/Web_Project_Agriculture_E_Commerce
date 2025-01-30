@@ -9,9 +9,21 @@ include('../control/product_edit_control.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Product</title>
+    <link rel="stylesheet" href="../css/edit_product.css">
     <script src="../js/product_edit_validation.js"></script>
 </head>
 <body>
+
+<div class="navbar">
+    <a href="seller_profile.php">View Dashboard</a>
+    <a href="add_product.php">Add New Product</a>
+    <a href="seller_balance_account.php">Manage Your Balance Account</a>
+    <a href="seller_profile_edit.php">Manage Your Profile</a>
+    <a href="product_history.php">View Product History</a>
+    <a href="../control/seller_session_destroy.php">Logout</a>
+</div>
+
+<div class="main-content">
     <h1>Edit Product</h1>
 
     <form action="" method="post" enctype="multipart/form-data" onsubmit="return validateProductForm()">
@@ -20,19 +32,19 @@ include('../control/product_edit_control.php');
         <br><br>
 
         <label for="PName">Product Name</label>
-        <input type="text" name="PName" id="PName" value="<?php echo $product['PName']; ?>">
+        <input type="text" name="PName" id="PName" value="<?php echo htmlspecialchars($product['PName']); ?>">
         <p id="PNameError"></p><br>
 
         <label for="Price">Price</label>
-        <input type="number" name="Price" id="Price" value="<?php echo $product['Price']; ?>">
+        <input type="number" name="Price" id="Price" value="<?php echo htmlspecialchars($product['Price']); ?>">
         <p id="PriceError"></p><br>
 
         <label for="Quantity">Quantity</label>
-        <input type="number" name="Quantity" id="Quantity" value="<?php echo $product['Quantity']; ?>">
+        <input type="number" name="Quantity" id="Quantity" value="<?php echo htmlspecialchars($product['Quantity']); ?>">
         <p id="QuantityError"></p><br>
 
         <label for="Details">Details</label>
-        <textarea name="Details" id="Details" rows="5" cols="40"><?php echo $product['Details']; ?></textarea>
+        <textarea name="Details" id="Details" rows="5" cols="40"><?php echo htmlspecialchars($product['Details']); ?></textarea>
         <p id="DetailsError"></p><br>
 
         <label for="Picture">Product Image</label>
@@ -49,7 +61,7 @@ include('../control/product_edit_control.php');
 
         <button type="submit">Update Product</button>
     </form>
+</div>
 
-    <button onclick="location.href='seller_profile.php'">Go Back</button>
 </body>
 </html>

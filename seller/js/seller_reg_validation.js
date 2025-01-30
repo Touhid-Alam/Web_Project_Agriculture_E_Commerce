@@ -45,7 +45,7 @@ function validateFullName() {
 function validatePhone() {
     var phone = document.getElementById("phone").value;
     if (!/^\d{11}$/.test(phone)) {
-        document.getElementById("phoneError").innerHTML = "Phone number must be 10 digits.";
+        document.getElementById("phoneError").innerHTML = "Phone number must be 11 digits.";
         return false;
     } else {
         document.getElementById("phoneError").innerHTML = "";

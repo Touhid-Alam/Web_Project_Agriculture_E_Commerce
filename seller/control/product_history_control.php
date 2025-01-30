@@ -15,10 +15,8 @@ $sellerUsername = $_SESSION['username'];
 $db = new mydb();
 $conn = $db->openCon();
 
-
 $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
-$sortOrder = isset($_GET['sort']) ? $_GET['sort'] : 'asc';
-$productHistory = $db->getProductHistory($sellerUsername, $searchTerm, $sortOrder, $conn);
+$productHistory = $db->getProductHistory($sellerUsername, $searchTerm, 'asc', $conn);
 
 $conn->close();
 ?>

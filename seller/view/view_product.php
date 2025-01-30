@@ -9,8 +9,20 @@ include('../control/product_view_control.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Product</title>
+    <link rel="stylesheet" href="../css/view_product.css">
 </head>
 <body>
+
+<div class="navbar">
+    <a href="seller_profile.php">View Dashboard</a>
+    <a href="add_product.php">Add New Product</a>
+    <a href="seller_balance_account.php">Manage Your Balance Account</a>
+    <a href="seller_profile_edit.php">Manage Your Profile</a>
+    <a href="product_history.php">View Product History</a>
+    <a href="../control/seller_session_destroy.php">Logout</a>
+</div>
+
+<div class="main-content">
     <h1>Product Details</h1>
 
     <?php if ($product): ?>
@@ -49,7 +61,7 @@ include('../control/product_view_control.php');
     <?php else: ?>
         <p>Product not found or unavailable.</p>
     <?php endif; ?>
+</div>
 
-    <button onclick="location.href='seller_profile.php'">Go Back</button>
 </body>
 </html>

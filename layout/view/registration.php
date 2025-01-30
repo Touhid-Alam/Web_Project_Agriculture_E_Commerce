@@ -10,8 +10,20 @@ session_destroy();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration - Agriculture E-Commerce System</title>
+    <link rel="stylesheet" href="../css/registration.css">
 </head>
 <body>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="homepage.php">Home</a>
+        <a href="about_us.php">About Us</a>
+        <a href="contact_us.php">Contact Us</a>
+        <a href="login.php" class="login">Login</a>
+        <a href="registration.php" class="registration">Registration</a>
+    </div>
+
+    <!-- Main Content -->
     <h1>Registration</h1>
     <p>Select an option below:</p>
     <br>
@@ -35,6 +47,6 @@ session_destroy();
     </table>
 
     <br>
-    <button onclick="window.location.href='homepage.php'">Back to Home</button>
+    <a href="homepage.php" class="home-button">Back to Home</a>
 </body>
 </html>

@@ -18,24 +18,27 @@ $sellerUsername = $_SESSION['username'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product History</title>
+    <link rel="stylesheet" href="../css/product_history.css">
 </head>
 <body>
 
+<div class="navbar">
+    <a href="seller_profile.php">View Dashboard</a>
+    <a href="add_product.php">Add New Product</a>
+    <a href="seller_balance_account.php">Manage Your Balance Account</a>
+    <a href="seller_profile_edit.php">Manage Your Profile</a>
+    <a href="product_history.php">View Product History</a>
+    <a href="../control/seller_session_destroy.php">Logout</a>
+</div>
+
+<div class="main-content">
     <h1>Product History for <?php echo htmlspecialchars($sellerUsername); ?></h1>
 
-    <!-- Search and Sort Options -->
-    <form method="get">
+    <!-- Search and Refresh Options -->
+    <form method="get" class="search-refresh-form">
         <input type="text" name="search" placeholder="Search by Product Name" value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
-        <select name="sort">
-            <option value="asc" <?php echo isset($_GET['sort']) && $_GET['sort'] == 'asc' ? 'selected' : ''; ?>>Sort by Name (A-Z)</option>
-            <option value="desc" <?php echo isset($_GET['sort']) && $_GET['sort'] == 'desc' ? 'selected' : ''; ?>>Sort by Name (Z-A)</option>
-        </select>
-        <button type="submit">Search and Sort</button>
-    </form>
-
-    <!-- Refresh Button -->
-    <form method="get">
-        <button type="submit">Refresh</button>
+        <button type="submit">Search</button>
+        <button type="submit" name="refresh">Refresh</button>
     </form>
 
     <div id="product-history">
@@ -68,8 +71,7 @@ $sellerUsername = $_SESSION['username'];
             <?php endif; ?>
         </table>
     </div>
-
-    <button onclick="location.href='seller_profile.php'">Go Back to Profile</button>
+</div>
 
 </body>
 </html>

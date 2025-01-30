@@ -1,0 +1,87 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f7ed;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+/* Navbar */
+.navbar {
+    width: 200px;
+    background-color: #333;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100vh; /* Full height */
+    position: fixed; /* Fixed position */
+    top: 0;
+    left: 0;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 14px 16px;
+    margin: 5px 0;
+    width: 100%;
+    text-align: left;
+    border-radius: 5px;
+}
+
+.navbar a:hover {
+    font-weight: bold; /* Bold font on hover */
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 250px; /* Adjust for the navbar width and add space */
+    padding: 20px;
+}
+
+h1 {
+    color: #2d572c;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #2d572c;
+    margin-bottom: 10px;
+}
+
+.account-info {
+    margin-bottom: 20px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.info-label {
+    font-weight: bold;
+    color: #333;
+}
+
+.info-value {
+    color: #555;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    font-size: 1em;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #2E7D32;
+}

@@ -9,29 +9,39 @@ include('../control/manage_balance_control.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Balance</title>
+    <link rel="stylesheet" href="../css/edit_balance.css">
 </head>
 <body>
 
-<h1>Manage Your Balance</h1>
-<h2>Current Balance: <?php echo htmlspecialchars($balance); ?> BDT</h2>
+<div class="navbar">
+    <a href="seller_profile.php">View Dashboard</a>
+    <a href="add_product.php">Add New Product</a>
+    <a href="seller_balance_account.php">Manage Your Balance Account</a>
+    <a href="seller_profile_edit.php">Manage Your Profile</a>
+    <a href="product_history.php">View Product History</a>
+    <a href="../control/seller_session_destroy.php">Logout</a>
+</div>
 
-<!-- Form for adding balance -->
-<h3>Add Balance</h3>
-<form method="post" action="">
-    <label for="add_amount">Amount to Add</label>
-    <input type="number" name="add_amount" id="add_amount" required>
-    <button type="submit" name="add_balance">Add Balance</button>
-</form>
+<div class="main-content">
+    <h1>Manage Your Balance</h1>
+    <h2>Current Balance: <?php echo htmlspecialchars($balance); ?> BDT</h2>
 
-<!-- Form for withdrawing balance -->
-<h3>Withdraw Balance</h3>
-<form method="post" action="">
-    <label for="withdraw_amount">Amount to Withdraw</label>
-    <input type="number" name="withdraw_amount" id="withdraw_amount" required>
-    <button type="submit" name="withdraw_balance">Withdraw Balance</button>
-</form>
+    <!-- Form for adding balance -->
+    <h3>Add Balance</h3>
+    <form method="post" action="">
+        <label for="add_amount">Amount to Add</label>
+        <input type="number" name="add_amount" id="add_amount" required>
+        <button type="submit" name="add_balance">Add Balance</button>
+    </form>
 
-<button onclick="location.href='seller_profile.php'">Go Back to Profile</button>
+    <!-- Form for withdrawing balance -->
+    <h3>Withdraw Balance</h3>
+    <form method="post" action="">
+        <label for="withdraw_amount">Amount to Withdraw</label>
+        <input type="number" name="withdraw_amount" id="withdraw_amount" required>
+        <button type="submit" name="withdraw_balance">Withdraw Balance</button>
+    </form>
+</div>
 
 </body>
 </html>

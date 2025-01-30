@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seller Registration</title>
     <script src="../js/seller_reg_validation.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/seller_registration.css">
 </head>
 <body>
 
@@ -13,7 +14,7 @@
 <?php
 session_start();
 if (isset($_SESSION['registration_error'])) {
-    echo$_SESSION['registration_error'];
+    echo $_SESSION['registration_error'];
     unset($_SESSION['registration_error']);
 }
 session_unset();
@@ -31,9 +32,7 @@ session_destroy();
             </tr>
             <tr>
                 <td><label for="password">Password:</label></td>
-                <td>
-                    <input type="password" id="password" name="password">
-                </td>
+                <td><input type="password" id="password" name="password"></td>
                 <td><p id="passwordError"></p></td>
             </tr>
             <tr>
@@ -49,7 +48,7 @@ session_destroy();
         <table>
             <tr>
                 <td><label for="businessName">Business Name:</label></td>
-                <td><textarea id="businessName" name="businessName" rows="2" cols="30"></textarea></td>
+                <td><input type="text" id="businessName" name="businessName"></td>
                 <td><p id="businessNameError"></p></td>
             </tr>
             <tr>
@@ -83,7 +82,7 @@ session_destroy();
             </tr>
             <tr>
                 <td><label for="address">Address:</label></td>
-                <td><textarea id="address" name="address" rows="4" cols="50"></textarea></td>
+                <td><input type="text" id="address" name="address"></td>
                 <td><p id="addressError"></p></td>
             </tr>
             <tr>
@@ -117,19 +116,12 @@ session_destroy();
 
     <button type="submit">Register as Seller</button>
 </form>
-<a href="../../layout/view/login.php">Go to login</a>
-<a href="../../layout/view/homepage.php">Go to Home</a>
 
-<script>
-function togglePasswordVisibility() {
-    var passwordField = document.getElementById("password");
-    if (passwordField.type === "password") {
-        passwordField.type = "text";
-    } else {
-        passwordField.type = "password";
-    }
-}
-</script>
+<div class="nav-links">
+    <a href="../../layout/view/login.php">Go to login</a>
+    <a href="../../layout/view/homepage.php">Go to Home</a>
+    <a href="../../layout/view/registration.php">Go Back</a>
+</div>
 
 </body>
 </html>
