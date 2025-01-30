@@ -6,7 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
         loadProducts(document.getElementById('searchInput').value);
     });
 
-    document.getElementById('refreshButton').addEventListener('click', function() {
+    document.getElementById('refreshButton').addEventListener('click', function(event) {
+        event.preventDefault();
         document.getElementById('searchInput').value = '';
         loadProducts();
     });
@@ -25,13 +26,9 @@ function loadProducts(searchTerm = '') {
 }
 
 function attachDeleteHandlers() {
-    // Select all elements with the class 'deleteProduct'
     document.querySelectorAll('.deleteProduct').forEach(function(button) {
-        // Add a click event listener to each delete button
         button.addEventListener('click', function() {
-            // Get the product ID from the data-pid attribute of the button
             const pid = this.getAttribute('data-pid');
-            // Call the deleteProduct function with the product ID
             deleteProduct(pid);
         });
     });

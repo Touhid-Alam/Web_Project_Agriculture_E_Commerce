@@ -50,6 +50,7 @@ include('../control/manage_balance_control.php');
     <label for="withdraw_amount">Amount to Withdraw</label>
     <input type="number" name="withdraw_amount" id="withdraw_amount" required>
     <button type="submit" name="withdraw_balance">Withdraw Balance</button>
+    <p><?php echo $withdrawError; ?></p>
 </form>
 
 <button onclick="location.href='buyer_profile.php'">Go Back to Profile</button>

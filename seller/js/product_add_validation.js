@@ -1,6 +1,9 @@
 function validateProductName() {
     var PName = document.getElementById("PName").value;
-    if (/\d/.test(PName)) {
+    if (PName.trim() === "") {
+        document.getElementById("PNameError").innerHTML = "Product name cannot be empty.";
+        return false;
+    } else if (/\d/.test(PName)) {
         document.getElementById("PNameError").innerHTML = "Product name cannot contain numbers.";
         return false;
     } else {
@@ -46,17 +49,6 @@ function validatePicture() {
     }
 }
 
-function validateProductType() {
-    var productType = document.getElementById("ProductType").value;
-    if (productType.trim() === "") {
-        document.getElementById("ProductTypeError").innerHTML = "Product type cannot be empty.";
-        return false;
-    } else {
-        document.getElementById("ProductTypeError").innerHTML = "";
-        return true;
-    }
-}
-
 function validateProductForm() {
-    return validateProductName() && validatePrice() && validateQuantity() && validatePicture() && validateProductType();
+    return validateProductName() && validatePrice() && validateQuantity() && validatePicture();
 }

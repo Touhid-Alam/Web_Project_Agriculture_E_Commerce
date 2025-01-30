@@ -59,6 +59,7 @@ textarea {
     border-radius: 5px;
     font-size: 1em;
     width: 100%;
+    margin-bottom: 10px; /* Add margin to prevent overlap */
 }
 
 /* Error Messages */
