@@ -4,7 +4,7 @@ include('../control/product_history_control.php');
 
 // Redirect to login if the user is not logged in
 if (!isset($_SESSION['username'])) {
-    header("Location: ../view/seller_login.php");
+    header("Location: ../../layout/view/login.php");
     exit;
 }
 
@@ -23,10 +23,11 @@ $sellerUsername = $_SESSION['username'];
 <body>
 
 <div class="navbar">
-    <a href="seller_profile.php">View Dashboard</a>
+<a href="seller_profile.php">View Dashboard</a>
     <a href="add_product.php">Add New Product</a>
     <a href="seller_balance_account.php">Manage Your Balance Account</a>
-    <a href="seller_profile_edit.php">Manage Your Profile</a>
+    <a href="view_profile.php">View Profile</a>
+    <a href="seller_profile_edit.php">Edit Profile</a>
     <a href="product_history.php">View Product History</a>
     <a href="../control/seller_session_destroy.php">Logout</a>
 </div>

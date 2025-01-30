@@ -10,6 +10,15 @@ if (!isset($_SESSION['username'])) {
 }
 
 $sellerUsername = $_SESSION['username'];
+$pid = isset($_POST['pid']) ? $_POST['pid'] : '';
+
+if ($pid) {
+    $db = new mydb();
+    $conn = $db->openCon();
+    $db->deleteProduct($pid, $conn);
+    $conn->close();
+}
+
 $db = new mydb();
 $conn = $db->openCon();
 $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';

@@ -1,6 +1,10 @@
 <?php
 session_start();
 include('../control/seller_account_control.php');
+if (!isset($_SESSION['username'])) {
+    header("Location: ../../layout/view/login.php");
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -14,10 +18,11 @@ include('../control/seller_account_control.php');
 <body>
 
 <div class="navbar">
-    <a href="seller_profile.php">View Dashboard</a>
+<a href="seller_profile.php">View Dashboard</a>
     <a href="add_product.php">Add New Product</a>
     <a href="seller_balance_account.php">Manage Your Balance Account</a>
-    <a href="seller_profile_edit.php">Manage Your Profile</a>
+    <a href="view_profile.php">View Profile</a>
+    <a href="seller_profile_edit.php">Edit Profile</a>
     <a href="product_history.php">View Product History</a>
     <a href="../control/seller_session_destroy.php">Logout</a>
 </div>

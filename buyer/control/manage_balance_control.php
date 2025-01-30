@@ -19,6 +19,8 @@ $conn = $db->openCon();
 $balance = $db->getBuyerBalance($username, $conn);
 $accountDetails = $db->getBuyerAccountDetails($username, $conn);
 
+$withdrawError = "";
+
 // Handle balance addition
 if (isset($_POST['add_balance'])) {
     $addAmount = floatval($_POST['add_amount']);
@@ -39,7 +41,7 @@ if (isset($_POST['withdraw_balance'])) {
         header("Location: ../view/manage_balance.php");
         exit;
     } else {
-        echo "Invalid amount or insufficient balance.";
+        $withdrawError = "Invalid amount or insufficient balance.";
     }
 }
 
