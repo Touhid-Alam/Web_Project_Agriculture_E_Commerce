@@ -19,6 +19,10 @@ class mydb {
         return $connobject;
     }
 
+    public function closeCon($conn) {
+        $conn->close();
+    }
+
  // Get buyer details from the database based on the username
  public function getBuyerDetails($username, $conn) {
     $sql = "SELECT * FROM buyer WHERE BuyerUsername = ?";

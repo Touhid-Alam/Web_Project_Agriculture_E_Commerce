@@ -17,7 +17,7 @@ $conn = $db->openCon();
 
 // Fetch current balance and account details
 $balance = $db->getBuyerBalance($username, $conn);
-$accountDetails = $db->getBuyerAccountDetails($username, $conn);
+$accountDetails = getBuyerAccountDetails($username);
 
 $withdrawError = "";
 
@@ -45,5 +45,14 @@ if (isset($_POST['withdraw_balance'])) {
     }
 }
 
-$conn->close();
+// Close the database connection
+$db->closeCon($conn);
+
+function getBuyerAccountDetails($buyerUsername) {
+    $db = new mydb();
+    $conn = $db->openCon();
+    $accountDetails = $db->getBuyerAccountDetails($buyerUsername, $conn);
+    $db->closeCon($conn);
+    return $accountDetails;
+}
 ?>

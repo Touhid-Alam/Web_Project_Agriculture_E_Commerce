@@ -19,37 +19,45 @@ $oid = $_GET['oid'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Details</title>
+    <link rel="stylesheet" href="../css/buyer_profile.css">
 </head>
 <body>
+    <div class="navbar">
+        <a href="buyer_profile.php">Profile</a>
+        <a href="order_history.php">Order History</a>
+        <a href="buy_product.php">Buy Products</a>
+        <a href="../../layout/view/login.php">Logout</a>
+    </div>
 
-    <h1>Order Details for Order ID: <?php echo htmlspecialchars($oid); ?></h1>
+    <div class="main-content">
+        <h1>Order Details for Order ID: <?php echo htmlspecialchars($oid); ?></h1>
 
-    <?php if (!empty($orderDetails)): ?>
-        <table border="1">
-            <tr>
-                <th>Product ID</th>
-                <th>Product Name</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Total Price</th>
-                <th>Seller Username</th>
-            </tr>
-            <?php foreach ($orderDetails as $detail): ?>
+        <?php if (!empty($orderDetails)): ?>
+            <table border="1">
                 <tr>
-                    <td><?php echo htmlspecialchars($detail['pid']); ?></td>
-                    <td><?php echo htmlspecialchars($detail['PName']); ?></td>
-                    <td><?php echo htmlspecialchars($detail['price']); ?></td>
-                    <td><?php echo htmlspecialchars($detail['quantity']); ?></td>
-                    <td><?php echo htmlspecialchars($detail['TotalPrice']); ?></td>
-                    <td><?php echo htmlspecialchars($detail['seller_username']); ?></td>
+                    <th>Product ID</th>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total Price</th>
+                    <th>Seller Username</th>
                 </tr>
-            <?php endforeach; ?>
-        </table>
-    <?php else: ?>
-        <p>No details found for this order.</p>
-    <?php endif; ?>
+                <?php foreach ($orderDetails as $detail): ?>
+                    <tr>
+                        <td><?php echo htmlspecialchars($detail['pid']); ?></td>
+                        <td><?php echo htmlspecialchars($detail['PName']); ?></td>
+                        <td><?php echo htmlspecialchars($detail['price']); ?></td>
+                        <td><?php echo htmlspecialchars($detail['quantity']); ?></td>
+                        <td><?php echo htmlspecialchars($detail['TotalPrice']); ?></td>
+                        <td><?php echo htmlspecialchars($detail['seller_username']); ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
+        <?php else: ?>
+            <p>No details found for this order.</p>
+        <?php endif; ?>
 
-    <button onclick="location.href='order_history.php'">Go Back to Order History</button>
-
+        <button onclick="location.href='order_history.php'">Go Back to Order History</button>
+    </div>
 </body>
 </html>

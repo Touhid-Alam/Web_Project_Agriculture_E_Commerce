@@ -12,12 +12,8 @@ if (!isset($_SESSION['username'])) {
 // Get the buyer's username from the session
 $buyerUsername = $_SESSION['username'];
 
-// Ensure the database connection is established
-$db = new mydb();
-$conn = $db->openCon();
-
-// Fetch account details
-$accountDetails = $db->getBuyerAccountDetails($buyerUsername, $conn);
+// Fetch account details from the control file
+$accountDetails = getBuyerAccountDetails($buyerUsername);
 ?>
 
 <!DOCTYPE html>
