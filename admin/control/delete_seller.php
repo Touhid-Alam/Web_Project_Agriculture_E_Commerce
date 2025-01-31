@@ -28,5 +28,5 @@ if (isset($_GET['SellerUsername'])) {
     echo "<p>No seller selected for deletion.</p>";
 }
 
-echo '<a href="seller_info.html">Go Back</a>';
+echo '<a href="../view/seller_info.php">Go Back</a>';
 ?>

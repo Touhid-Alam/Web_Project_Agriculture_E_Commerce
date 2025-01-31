@@ -1,4 +1,5 @@
 <?php
+session_start();
 include '../model/admindb.php';
 
 $mydb = new mydb();
@@ -7,17 +8,16 @@ $connobject = $mydb->openCon();
 // Check if a search request is made
 if (isset($_GET['SellerUsername'])) {
     $username = trim($_GET['SellerUsername']); // Get the username from the form
-
+    $Username = $_SESSION['username'];
     if (!empty($username)) {
         $result = $mydb->searchSeller("seller", $username, $connobject);
-
+       
         if ($result && $result->num_rows > 0) {
             echo "<h3>Search Results:</h3>";
             echo "<table border='1' cellspacing='0' cellpadding='5'>
                     <tr>
                         <th>Seller Username</th>
                         <th>Email</th>
-                        <th>Password</th>
                         <th>Business Name</th>
                         <th>Product Type</th>
                         <th>Full Name</th>
@@ -25,12 +25,12 @@ if (isset($_GET['SellerUsername'])) {
                         <th>Address</th>
                         <th>District</th>
                         <th>NID</th>
+                        <th>Action</th>
                     </tr>";
             while ($row = $result->fetch_assoc()) {
                 echo "<tr>
                         <td>" . htmlspecialchars($row['SellerUsername']) . "</td>
                         <td>" . htmlspecialchars($row['Email']) . "</td>
-                        <td>" . htmlspecialchars($row['Password']) . "</td>
                         <td>" . htmlspecialchars($row['BusinessName']) . "</td>
                         <td>" . htmlspecialchars($row['ProductType']) . "</td>
                         <td>" . htmlspecialchars($row['Fullname']) . "</td>
@@ -39,9 +39,11 @@ if (isset($_GET['SellerUsername'])) {
                         <td>" . htmlspecialchars($row['District']) . "</td>
                          <td><a href='" .htmlspecialchars($row['NID']) . "' target='_blank'>View ID Proof</a></td>
                         <td>
-                            <a href='update_seller.php?SellerUsername=" . urlencode($row['SellerUsername']) . "'>Update</a> | 
-                            <a href='delete_seller.php?SellerUsername=" . urlencode($row['SellerUsername']) . "' onclick='return confirm(\"Are you sure you want to delete this seller?\");'>Delete</a>
-                        </td>
+                            <a href='../view/update_seller.php?SellerUsername=" . urlencode($row['SellerUsername']) . "'>Update</a> | 
+                            <a href='../control/delete_seller.php?SellerUsername=" . urlencode($row['SellerUsername']) . "'>Delete</a>|
+                            <a href='../view/Seller_product_info.php'>VIEW</a>
+                        
+                            </td>
                          </tr>";
             }
             echo "</table>";
@@ -62,7 +64,6 @@ elseif (isset($_GET['viewAll'])) {
                 <tr>
                     <th>Seller Username</th>
                     <th>Email</th>
-                    <th>Password</th>
                     <th>Business Name</th>
                     <th>Product Type</th>
                     <th>Full Name</th>
@@ -75,7 +76,6 @@ elseif (isset($_GET['viewAll'])) {
             echo "<tr>
                     <td>" . htmlspecialchars($row['SellerUsername']) . "</td>
                     <td>" . htmlspecialchars($row['Email']) . "</td>
-                    <td>" . htmlspecialchars($row['Password']) . "</td>
                     <td>" . htmlspecialchars($row['BusinessName']) . "</td>
                     <td>" . htmlspecialchars($row['ProductType']) . "</td>
                     <td>" . htmlspecialchars($row['Fullname']) . "</td>
