@@ -1,6 +1,23 @@
 <?php
+// Start session and include control file
 session_start();
-include('../control/manage_balance_control.php');
+include('../control/manage_balance_control.php'); // Updated path
+
+// Redirect to login if the user is not logged in
+if (!isset($_SESSION['username'])) {
+    header("Location: login.php");
+    exit;
+}
+
+// Get the buyer's username from the session
+$buyerUsername = $_SESSION['username'];
+
+// Ensure the database connection is established
+$db = new mydb();
+$conn = $db->openCon();
+
+// Fetch account details
+$accountDetails = $db->getBuyerAccountDetails($buyerUsername, $conn);
 ?>
 
 <!DOCTYPE html>
@@ -9,51 +26,34 @@ include('../control/manage_balance_control.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Balance</title>
+    <link rel="stylesheet" href="../css/buyer_profile.css">
 </head>
 <body>
+    <div class="navbar">
+        <a href="buyer_profile.php">Profile</a>
+        <a href="edit_profile.php">Edit Profile</a>
+        <a href="buy_product.php">Buy Products</a>
+        <a href="manage_balance.php">Manage Balance</a>
+        <a href="order_history.php">Order History</a>
+        <div class="logout-container">
+            <a class="logout-button" href="../../layout/view/login.php">LogOut</a>
+        </div>
+    </div>
 
-<h1>Manage Your Balance</h1>
-<h2>Current Balance: <?php echo htmlspecialchars($balance); ?> BDT</h2>
-
-<!-- Display Account Info -->
-<h3>Account Information</h3>
-<?php if (!empty($accountDetails)): ?>
-    <table border="1">
-        <tr>
-            <th>Account ID</th>
-            <th>Username</th>
-            <th>User Type</th>
-            <th>Total Balance</th>
-        </tr>
-        <tr>
-            <td><?php echo htmlspecialchars($accountDetails['AccountID']); ?></td>
-            <td><?php echo htmlspecialchars($accountDetails['username']); ?></td>
-            <td><?php echo htmlspecialchars($accountDetails['usertype']); ?></td>
-            <td><?php echo htmlspecialchars($accountDetails['totalbalance']); ?></td>
-        </tr>
-    </table>
-<?php else: ?>
-    <p>No account details found.</p>
-<?php endif; ?>
-
-<!-- Form for adding balance -->
-<h3>Add Balance</h3>
-<form method="post" action="">
-    <label for="add_amount">Amount to Add</label>
-    <input type="number" name="add_amount" id="add_amount" required>
-    <button type="submit" name="add_balance">Add Balance</button>
-</form>
-
-<!-- Form for withdrawing balance -->
-<h3>Withdraw Balance</h3>
-<form method="post" action="">
-    <label for="withdraw_amount">Amount to Withdraw</label>
-    <input type="number" name="withdraw_amount" id="withdraw_amount" required>
-    <button type="submit" name="withdraw_balance">Withdraw Balance</button>
-    <p><?php echo $withdrawError; ?></p>
-</form>
-
-<button onclick="location.href='buyer_profile.php'">Go Back to Profile</button>
-
+    <div class="main-content">
+        <h1>Manage Balance</h1>
+        <!-- Balance Management Form -->
+        <form method="post">
+            <div class="profile-item">
+                <label for="balance">Current Balance:</label>
+                <input type="text" id="balance" name="balance" value="<?php echo htmlspecialchars($accountDetails['totalbalance']); ?>" readonly>
+            </div>
+            <div class="profile-item">
+                <label for="addBalance">Add Balance:</label>
+                <input type="number" id="addBalance" name="addBalance" required>
+            </div>
+            <button type="submit">Add Balance</button>
+        </form>
+    </div>
 </body>
 </html>

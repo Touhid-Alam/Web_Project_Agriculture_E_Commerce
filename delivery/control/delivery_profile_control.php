@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['order_id']) && isset(
         $_SESSION['error_message'] = "Failed to assign order.";
     }
 
-    header("Location: ../view/employee_profile.php");
+    header("Location: ../view/delivery_profile.php");
     exit();
 }
 
@@ -106,6 +106,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['updateDelivery'])) {
     }
 
     header("Location: ../view/delivery_profile.php");
+    exit();
+}
+
+// Handle logout
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['logout'])) {
+    session_destroy();
+    header("Location: ../../layout/view/login.php");
     exit();
 }
 

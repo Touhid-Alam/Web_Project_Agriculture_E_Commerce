@@ -24,7 +24,8 @@ $deliveryDetails = $_SESSION['deliveryDetails'];
         <a href="delivery_profile.php">Profile</a>
         <a href="delivery_orders.php">Orders</a>
         <div class="logout-container">
-            <form action="../control/delivery_logout.php" method="POST">
+            <form action="../control/delivery_logout_control.php" method="POST">
+                <input type="hidden" name="logout" value="1">
                 <button type="submit" class="logout-button">Logout</button>
             </form>
         </div>

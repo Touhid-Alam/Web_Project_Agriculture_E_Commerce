@@ -11,6 +11,7 @@ session_destroy();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Agriculture E-Commerce System</title>
     <link rel="stylesheet" href="../css/homepage.css">
+    <script src="../js/hom.js" defer></script>
 </head>
 <body>
 
@@ -51,6 +52,8 @@ session_destroy();
                 <li>🛒 Secure Payment Options</li>
             </ul>
         </div>
+
+        <div id="load-more-content"></div>
     </div>
 
 </body>

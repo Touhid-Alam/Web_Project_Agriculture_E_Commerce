@@ -1,6 +1,16 @@
 <?php
+// Start session and include control file
 session_start();
 include('../control/buyer_edit_control.php');
+
+// Redirect to login if the user is not logged in
+if (!isset($_SESSION['username'])) {
+    header("Location: login.php");
+    exit;
+}
+
+// Get the buyer's username from the session
+$buyerUsername = $_SESSION['username'];
 ?>
 
 <!DOCTYPE html>
@@ -8,55 +18,46 @@ include('../control/buyer_edit_control.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Buyer Profile</title>
-    
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="../css/buyer_profile.css">
 </head>
 <body>
+    <div class="navbar">
+        <a href="buyer_profile.php">Profile</a>
+        <a href="edit_profile.php">Edit Profile</a>
+        <a href="buy_product.php">Buy Products</a>
+        <a href="manage_balance.php">Manage Balance</a>
+        <a href="order_history.php">Order History</a>
+        <div class="logout-container">
+            <a class="logout-button" href="../../layout/view/login.php">LogOut</a>
+        </div>
+    </div>
 
-<h1>Edit Profile</h1>
-
-<form action="../control/buyer_edit_control.php" method="post" enctype="multipart/form-data" onsubmit="return validateBuyerForm()">
-    <fieldset>
-        <legend><strong>Account Information</strong></legend>
-        <table>
-            <tr>
-                <td><label for="email">Email:</label></td>
-                <td><input type="email" name="email" id="email" value="<?php echo htmlspecialchars($buyer['email'] ?? ''); ?>"></td>
-                <td><p id="emailError"></p></td>
-            </tr>
-            <tr>
-                <td><label for="password">Password:</label></td>
-                <td><input type="password" name="password" id="password" value="<?php echo htmlspecialchars($buyer['password'] ?? ''); ?>"></td>
-                <td><p id="passwordError"></p></td>
-            </tr>
-        </table>
-    </fieldset>
-
-    <fieldset>
-        <legend><strong>Personal Information</strong></legend>
-        <table>
-            <tr>
-                <td><label for="fullName">Full Name:</label></td>
-                <td><input type="text" name="fullName" id="fullName" value="<?php echo htmlspecialchars($buyer['fullName'] ?? ''); ?>"></td>
-                <td><p id="fullNameError"></p></td>
-            </tr>
-            <tr>
-                <td><label for="phone">Phone:</label></td>
-                <td><input type="tel" name="phone" id="phone" value="<?php echo htmlspecialchars($buyer['phone'] ?? ''); ?>"></td>
-                <td><p id="phoneError"></p></td>
-            </tr>
-            <tr>
-                <td><label for="dateOfBirth">Date of Birth:</label></td>
-                <td><input type="date" name="dateOfBirth" id="dateOfBirth" value="<?php echo htmlspecialchars($buyer['dateOfBirth'] ?? ''); ?>"></td>
-                <td><p id="dateOfBirthError"></p></td>
-            </tr>
-        </table>
-    </fieldset>
-
-    <button type="submit">Update Profile</button>
-</form>
-
-<button onclick="location.href='buyer_profile.php'">Go Back</button>
-
+    <div class="main-content">
+        <h1>Edit Profile</h1>
+        <form method="post">
+            <div class="profile-item">
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" name="fullName" value="<?php echo htmlspecialchars($buyer['fullName'] ?? ''); ?>" required>
+            </div>
+            <div class="profile-item">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($buyer['email'] ?? ''); ?>" required>
+            </div>
+            <div class="profile-item">
+                <label for="phone">Phone:</label>
+                <input type="text" id="phone" name="phone" value="<?php echo htmlspecialchars($buyer['phone'] ?? ''); ?>" required>
+            </div>
+            <div class="profile-item">
+                <label for="dateOfBirth">Date of Birth:</label>
+                <input type="date" id="dateOfBirth" name="dateOfBirth" value="<?php echo htmlspecialchars($buyer['dateOfBirth'] ?? ''); ?>" required>
+            </div>
+            <div class="profile-item">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" value="<?php echo htmlspecialchars($buyer['password'] ?? ''); ?>" required>
+            </div>
+            <button type="submit">Update Profile</button>
+        </form>
+    </div>
 </body>
 </html>
