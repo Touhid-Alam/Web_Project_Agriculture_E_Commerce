@@ -60,9 +60,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $updateResult = $mydb->updateAdmin("admin", $username, $email, $password, $fullname, $idProofPath, $connobject);
             if ($updateResult) {
                 echo "Admin details updated successfully!";
+                
             } else {
                 echo "Error: Unable to update admin details.";
             }
+
         } else {
             echo "Admin with username '$username' not found.";
         }

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Registration</title>
-    <link rel="stylesheet" type="text/css" href="../css/admin_reg.css">
+    <script src="../adminJS/admin_reg.js"></script>
 </head>
 <body>
 
@@ -44,13 +44,11 @@
     </fieldset>
 
     <button type="submit">Register as Admin</button>
+    <tr>
+            <td><a href="../../layout/view/homepage.php">Go Home</a></td>
+            <td><a href="../../layout/view/login.php">Go to login</a></td>
+    </tr>
 </form>
-
-<div class="nav-links">
-    <a href="../../layout/view/login.php">Go to login</a>
-    <a href="../../layout/view/homepage.php">Go to Home</a>
-    <a href="../../layout/view/registration.php">Go Back</a>
-</div>
 
 </body>
 </html>

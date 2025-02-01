@@ -13,7 +13,8 @@ include('../control/admin_profile_control.php');
 </head>
 <body>
 
-<a href="../view/admin_dashboard.php">Go Back to Admin Home</a>
+<button onclick="window.location.href='../view/admin_dashboard.php';">Go Back to Admin Home</button>
+
 
 </body>
 </html>

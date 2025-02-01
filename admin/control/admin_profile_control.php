@@ -25,6 +25,8 @@ $result = $mydb->getAdminInfo("admin", $username, $connobject);
  echo "<tr><td>Full Name</td><td>" .($adminDetails['Fullname']) . "</td></tr>";
  echo "<tr><td>ID Proof</td><td><a href='" .($adminDetails['NID']) . "' target='_blank'>View ID Proof</a></td></tr>";
  echo "</table>";
+ echo '<button onclick="window.location.href=\'../view/admin_update.php\';">Edit</button>';
+
 
 // Close the database connection
 $connobject->close();

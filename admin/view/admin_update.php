@@ -37,6 +37,6 @@
     </fieldset>
     <button type="submit">Update Admin</button>
 </form>
-<a href="../view/admin_dashboard.php">BACK</a>
+<a href="../view/admin_profile.php">BACK</a>
 </body>
 </html>
