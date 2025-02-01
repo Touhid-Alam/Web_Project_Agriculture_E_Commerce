@@ -14,11 +14,37 @@ $conn = $db->openCon();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $deliveryId = $_POST['delivery_id'];
-    $fullName = $_POST['fullName'];
-    $email = $_POST['email'];
-    $phone = $_POST['phone'];
-    $vehicle = $_POST['vehicle'];
-    $age = $_POST['age'];
+    $fullName = trim($_POST['fullName']);
+    $email = trim($_POST['email']);
+    $phone = trim($_POST['phone']);
+    $vehicle = trim($_POST['vehicle']);
+    $age = trim($_POST['age']);
+
+    // Validate inputs
+    if (empty($fullName) || empty($email) || empty($phone) || empty($vehicle) || empty($age)) {
+        $_SESSION['error_message'] = "All fields are required.";
+        header("Location: ../view/update_delivery.php?delivery_id=" . $deliveryId);
+        exit();
+    }
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $_SESSION['error_message'] = "Invalid email format.";
+        header("Location: ../view/update_delivery.php?delivery_id=" . $deliveryId);
+        exit();
+    }
+
+    if (!is_numeric($phone) || strlen($phone) !== 10) {
+        $_SESSION['error_message'] = "Phone number must be exactly 10 digits.";
+        header("Location: ../view/update_delivery.php?delivery_id=" . $deliveryId);
+        exit();
+    }
+
+    $ageNumber = intval($age);
+    if ($ageNumber < 18) {
+        $_SESSION['error_message'] = "Age must be at least 18.";
+        header("Location: ../view/update_delivery.php?delivery_id=" . $deliveryId);
+        exit();
+    }
 
     $result = $db->updateDelivery($deliveryId, $fullName, $email, $phone, $vehicle, $age, $conn);
 

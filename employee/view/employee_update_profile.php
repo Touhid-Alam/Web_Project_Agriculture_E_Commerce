@@ -28,7 +28,7 @@ $employeeDetails = $_SESSION['employeeDetails'];
     <div class="navbar">
         <a href="employee_profile.php">Profile</a>
         <a href="employee_orders.php">Orders</a>
-        <a href="employee_logout.php">Logout</a>
+       
     </div>
 
     <div class="main-content">

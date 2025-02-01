@@ -58,5 +58,37 @@ $delivery = $_SESSION['delivery'];
             <button type="submit">Save Changes</button>
         </form>
     </div>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const updateForm = document.querySelector(".update-form");
+        updateForm.addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            const fullName = document.getElementById("fullName").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const phone = document.getElementById("phone").value.trim();
+            const vehicle = document.getElementById("vehicle").value.trim();
+            const age = document.getElementById("age").value.trim();
+
+            if (fullName === "" || email === "" || phone === "" || vehicle === "" || age === "") {
+                alert("Please fill in all fields.");
+                return;
+            }
+
+            const xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    alert("Profile updated successfully.");
+                }
+            };
+
+            xhr.open("POST", updateForm.action, true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+            const data = `fullName=${encodeURIComponent(fullName)}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(phone)}&vehicle=${encodeURIComponent(vehicle)}&age=${encodeURIComponent(age)}`;
+            xhr.send(data);
+        });
+    });
+    </script>
 </body>
 </html>

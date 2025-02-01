@@ -1,10 +1,11 @@
 /* General Styles */
 body {
     font-family: Arial, sans-serif;
+    background-color: #f3f7ed;
+    color: #333;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-    line-height: 1.6;
+    display: flex;
 }
 
 /* Navbar */
@@ -65,7 +66,7 @@ input[type="text"] {
 
 button {
     background-color: #4CAF50;
-    color: #fff;
+    color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -95,25 +96,6 @@ th, td {
 th {
     background-color: #4CAF50;
     color: #fff;
-}
-
-a {
-    display: inline-block;
-    background-color: #f44336;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    text-align: center;
-    margin: 20px auto;
-    display: block;
-    width: 100px;
-}
-
-a:hover {
-    background-color: #d32f2f;
-    transform: scale(1.03);
 }
 
 /* Profile Card */
@@ -196,10 +178,11 @@ a:hover {
 
 .update-form button:hover {
     background-color: #2E7D32;
+    transform: scale(1.03);
 }
 
 .logout-container {
-    margin-top: auto;
+    margin-top: 10px; /* Adjust margin to place it right after the order button */
     width: 100%;
 }
 
@@ -219,4 +202,5 @@ a:hover {
 
 .logout-button:hover {
     background-color: #2E7D32;
+    transform: scale(1.03);
 }

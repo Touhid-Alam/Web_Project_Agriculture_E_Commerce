@@ -1,10 +1,11 @@
 /* General Styles */
 body {
     font-family: Arial, sans-serif;
+    background-color: #f3f7ed;
+    color: #333;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-    line-height: 1.6;
+    display: flex;
 }
 
 /* Navbar */
@@ -37,7 +38,7 @@ body {
 
 /* Main Content */
 .main-content {
-    margin-left: 220px; /* Adjust for the navbar width and add space */
+    margin-left: 250px; /* Adjust for the navbar width and add space */
     padding: 20px;
 }
 
@@ -65,7 +66,7 @@ input[type="text"] {
 
 button {
     background-color: #4CAF50;
-    color: #fff;
+    color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -196,10 +197,11 @@ a:hover {
 
 .update-form button:hover {
     background-color: #2E7D32;
+    transform: scale(1.03);
 }
 
 .logout-container {
-    margin-top: auto;
+    margin-top: 10px; /* Adjust margin to place it right after the order button */
     width: 100%;
 }
 
@@ -219,4 +221,5 @@ a:hover {
 
 .logout-button:hover {
     background-color: #2E7D32;
+    transform: scale(1.03);
 }

@@ -32,7 +32,7 @@ if (isset($_SESSION['username'])) {
     }
     ?>
 
-    <form action="../control/delivery_login_control.php" method="POST"  enctype="multipart/form-data">
+    <form id="loginForm" action="../control/delivery_login_control.php" method="POST" enctype="multipart/form-data">
         <table>
             <tr>
                 <td><label for="username">Username:</label></td>

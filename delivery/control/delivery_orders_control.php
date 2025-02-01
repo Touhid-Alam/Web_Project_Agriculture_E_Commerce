@@ -30,6 +30,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['order_id']) && isset(
                     return $order['OID'] !== $orderId;
                 });
                 // Pass the completed order to the admin
+                if (!isset($_SESSION['completedOrders'])) {
+                    $_SESSION['completedOrders'] = [];
+                }
                 $_SESSION['completedOrders'][] = $orderId;
             }
         } else {
@@ -47,6 +50,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['order_id']) && isset(
         } else {
             $_SESSION['error_message'] = "Failed to submit order.";
         }
+
+        header("Location: ../view/delivery_orders.php");
+        exit();
     }
 }
 

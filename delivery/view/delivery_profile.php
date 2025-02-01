@@ -66,5 +66,6 @@ $deliveryDetails = $_SESSION['deliveryDetails'];
             <p>Delivery details not found.</p>
         <?php endif; ?>
     </div>
+    <script src="../js/delivery_profile.js"></script>
 </body>
 </html>

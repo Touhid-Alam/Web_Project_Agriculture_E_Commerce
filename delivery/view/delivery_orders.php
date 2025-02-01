@@ -62,5 +62,6 @@ if (!isset($_SESSION['username'])) {
             <p>No pending orders found.</p>
         <?php endif; ?>
     </div>
+    <script src="../js/delivery_orders.js"></script>
 </body>
 </html>
