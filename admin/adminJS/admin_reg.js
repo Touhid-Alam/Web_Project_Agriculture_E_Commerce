@@ -1,86 +1,70 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const form = document.querySelector("form");
+    const form = document.getElementById("adminRegistrationForm");
 
+    const usernameField = document.getElementById("adminUsername");
+    const emailField = document.getElementById("email");
+    const passwordField = document.getElementById("adminPassword");
+    const fullnameField = document.getElementById("adminFullname");
+    const idProofField = document.getElementById("idProof");
+
+    const usernameError = document.getElementById("usernameError");
+    const emailError = document.getElementById("emailError");
+    const passwordError = document.getElementById("passwordError");
+    const fullNameError = document.getElementById("fullNameError");
+    const idProofError = document.getElementById("idProofError");
+
+    // Function to clear all error messages
+    function clearErrors() {
+        usernameError.textContent = '';
+        emailError.textContent = '';
+        passwordError.textContent = '';
+        fullNameError.textContent = '';
+        idProofError.textContent = '';
+    }
+
+    // Form validation function
+    function validateForm() {
+        clearErrors();
+        let isValid = true;
+
+        // Username validation (cannot be empty)
+        if (usernameField.value.trim() === "") {
+            usernameError.textContent = "Username is required.";
+            isValid = false;
+        }
+
+        // Email validation (valid email format)
+        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        if (!emailPattern.test(emailField.value)) {
+            emailError.textContent = "Please enter a valid email address.";
+            isValid = false;
+        }
+
+        // Password validation (at least 6 characters)
+        if (passwordField.value.length < 6) {
+            passwordError.textContent = "Password must be at least 6 characters long.";
+            isValid = false;
+        }
+
+        // Full Name validation (cannot be empty)
+        if (fullnameField.value.trim() === "") {
+            fullNameError.textContent = "Full Name is required.";
+            isValid = false;
+        }
+
+        // ID Proof validation (file must be uploaded)
+        if (idProofField.files.length === 0) {
+            idProofError.textContent = "Please upload your NID proof.";
+            isValid = false;
+        }
+
+        return isValid;
+    }
+
+    // Attach the validation function to form submission
     form.addEventListener("submit", function(event) {
-        if (!validation()) {
-            event.preventDefault();
+        if (!validateForm()) {
+            event.preventDefault(); // Prevent form submission if validation fails
         }
     });
 });
-
-function validateUsername() {
-    var adminUsername = document.getElementById("adminUsername").value.trim();
-    const username = /^[a-zA-Z0-9]*$/;
-    
-    if (adminUsername.length < 4) {
-        document.getElementById("usernameError").innerHTML =
-            "Username must be at least 4 characters long.";
-        return false;
-    }
-    else if (adminUsername.includes(" ")) {
-        document.getElementById("usernameError").innerHTML =
-            "Spaces are not allowed in the username.";
-
-        return false;
-    } else if (!username.test(adminUsername)) {
-        document.getElementById("usernameError").innerHTML =
-            "Username should only contain alphabets and numbers.";
-        return false;
-    } else {
-        document.getElementById("usernameError").innerHTML = "";
-        return true;
-    }
-}
-
-
-
-function validateEmail() {
-    var email = document.getElementById("email").value;
-    if (!email.endsWith("@gmail.com")) {
-        document.getElementById("emailError").innerHTML = "Email must be a Gmail address.";
-        return false;
-    } else {
-        document.getElementById("emailError").innerHTML = "";
-        return true;
-    }
-}
-
-
-function validatePassword(){
-    var adminPassword = document.getElementById("adminPassword").value;
-
-    if (
-        adminPassword === "" ||
-        !/[0-9]/.test(adminPassword) ||
-        !/[A-Z]/.test(adminPassword) ||
-        adminPassword.length < 8
-    ) {
-        document.getElementById("passwordError").innerHTML =
-            "Password must be at least 8 characters long, contain at least one numeric character, and one uppercase letter.";
-        return false;
-    } else {
-        document.getElementById("passwordError").innerHTML = "";
-        return true;
-    }
-}
-
-function validateFullName() {
-    var adminFullname = document.getElementById("adminFullname").value.trim();
-    const fullname = /^[a-zA-Z ]*$/;
-
-    if (adminFullname === "" || !fullname.test(adminFullname)) {
-        document.getElementById("fullnameError").innerHTML =
-            "Full name should only contain alphabets and spaces and cannot be empty.";
-        return false;
-    } else {
-        document.getElementById("fullnameError").innerHTML = "";
-        return true;
-    }
-}
-
-
-
-function validation() {
-   
-    return validateUsername()&& validatePassword()&& validateEmail()&&validateFullName();
-}

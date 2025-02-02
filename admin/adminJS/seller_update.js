@@ -70,9 +70,9 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         // Phone validation (valid phone number, should be 10 digits)
-        const phonePattern = /^[0-9]{10}$/;
+        const phonePattern = /^[0-9]{11}$/;
         if (!phonePattern.test(phoneField.value)) {
-            phoneError.textContent = "Phone number must be 10 digits.";
+            phoneError.textContent = "Phone number must be 11 digits.";
             isValid = false;
         }
 
