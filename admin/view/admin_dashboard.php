@@ -30,7 +30,6 @@ $adminUsername = $_SESSION['username'];
 
 
     <h2>Dashboard Features</h2>
-    <p>Here you can manage admins, view reports, and perform other administrative tasks.</p>
     <div class="navbar">
         <a href="../view/admin_dashboard.php">Admin</a>
         <a href="../view/seller_info.php">Seller Info</a>
@@ -40,11 +39,19 @@ $adminUsername = $_SESSION['username'];
         <a href="../../layout/view/login.php">Logout</a>
     </div>
     
-
-    <form action="../../employee/view/employee_orders.php" method="GET">
-        <button type="submit" name="viewAll" value="true">View All Sellers</button>
+   <table> 
+    <form action="../view/admin_dashboard.php" method="GET">
+        <button type="submit" name="viewAllo" value="true">View All Orders</button>
     </form>
-   
+    
+    <form action="../view/admin_dashboard.php" method="GET">
+        <button type="submit" name="viewAllp" value="true">View All Products</button>
+        
+    </form>
+    <?php
+    include('../control/all_products&orders.php');
+    ?>
+   </table>
     
 
 

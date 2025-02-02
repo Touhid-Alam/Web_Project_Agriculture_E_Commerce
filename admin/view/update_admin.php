@@ -50,10 +50,6 @@ if (isset($_GET['AdminUsername'])) {
 
 <div class="navbar">
     <a href="../view/admin_dashboard.php">Admin</a>
-    <a href="../view/seller_info.php">Seller Info</a>
-    <a href="../view/buyer_info.php">Buyer Info</a>
-    <a href="../view/employee_info.php">Employee Info</a>
-    <a href="../view/delivery_info.php">Delivery Man Info</a>
     <a href="../../layout/view/login.php">Logout</a>
 </div>
 

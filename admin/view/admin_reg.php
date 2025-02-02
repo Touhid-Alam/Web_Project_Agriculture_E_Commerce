@@ -19,28 +19,29 @@
             
             <tr>
                 <td><label for="adminUsername">Username:</label></td>
-                <td><input type="text" id="adminUsername" name="username" required></td>
+                <td><input type="text" id="adminUsername" name="username"></td>
                 <td><p id="usernameError"></p></td>
             </tr>
             <tr>
                 <td><label for="email">Email:</label></td>
-                <td><input type="email" id="email" name="email" required></td>
+                <td><input type="email" id="email" name="email" ></td>
                 <td><p id="emailError"></p></td>
             </tr>
             <tr>
                 <td><label for="adminPassword">Password:</label></td>
-                <td><input type="password" id="adminPassword" name="password" required></td>
+                <td><input type="password" id="adminPassword" name="password" ></td>
                 <td><p id="passwordError"></p></td>
             </tr>
             <tr>
                 <td><label for="adminFullname">Full Name:</label></td>
-                <td><input type="text" id="adminFullname" name="fullname" required></td>
+                <td><input type="text" id="adminFullname" name="fullname" ></td>
                 <td><p id="fullNameError"></p></td>
             </tr>
            
             <tr>
                 <td><label for="idProof">Upload NID:</label></td>
-                <td><input type="file" id="idProof" name="idProof" required></td>
+                <td><input type="file" id="idProof" name="idProof" ></td>
+                <td><p id="idProofError"></p></td>
             </tr>
         </table>
     </fieldset>
