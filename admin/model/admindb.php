@@ -53,16 +53,27 @@ class mydb {
         return $result;
     }
 
+    public function searchAdmin($table, $username, $conn) {
+        // Secure the username input to prevent SQL injection
+        $username = mysqli_real_escape_string($conn, $username);
+
+        // SQL query to search for the admin by username
+        $sql = "SELECT * FROM $table WHERE AdminUsername = '$username' LIMIT 1";
+
+        // Execute the query and return the result
+        $result = $conn->query($sql);
+        return $result;
+    }
     function viewAdmin($table,$username,$connobject)
     {
         $sql="SELECT * FROM $table WHERE AdminUsername = '$username'";
         $result=$connobject->query($sql);
         return $result;
     }
-    function updateAdmin($table, $username, $email, $password, $fullname, $idProofPath, $connobject) {
+    function updateAdmin($table, $AdminUsername, $email, $password, $fullname, $NID, $connobject) {
         
-        $sql = "UPDATE $table SET Email = '$email',  Password = '$password', Fullname = '$fullname',NID = '$idProofPath' 
-                WHERE AdminUsername = '$username'";                   
+        $sql = "UPDATE $table SET Email = '$email',  Password = '$password', Fullname = '$fullname',NID = '$NID' 
+                WHERE AdminUsername = '$AdminUsername'";                   
                
                return $connobject->query($sql);
     }
@@ -148,14 +159,14 @@ class mydb {
         return $sql->execute();
     }
 
-    public function updateDeliveryMan($table, $DeliveryUsername, $Email, $Password, $Fullname, $Phone, $Vehicle,$CV, $Age, $conn) {
+    public function updateDeliveryMan($table, $DeliveryUsername, $Email, $Password, $Fullname, $Phone, $vehicle,$CV, $Age, $conn) {
         // Update query for the delivery man
         $sql = "UPDATE $table SET 
                     Email = '$Email',
                     Password = '$Password', 
                     Fullname = '$Fullname', 
                     Phone = '$Phone', 
-                    Vehicle = '$Vehicle',                                    
+                    Vehicle = '$vehicle',                                    
                     CV = '$CV',
                     Age = '$Age'               
 
@@ -211,22 +222,25 @@ public function searchBuyer($table, $username, $conn) {
 }
 
 public function updateBuyer($table, $BuyerUsername, $Email, $Password, $Fullname, $Phone, $DateOfBirth, $conn) {
-    // Update query for the buyer
-    $sql = "UPDATE $table SET 
-                Email = '$Email', 
-                Password = '$Password', 
-                Fullname = '$Fullname', 
-                Phone = '$Phone', 
-                $DateOfBirth = '$DateOfBirth'             
-            WHERE $BuyerUsername = '$BuyerUsername'";
-    
-    // Execute the query and check if successful
+    if (empty($DateOfBirth) || !DateTime::createFromFormat('Y-m-d', $DateOfBirth)) {
+        return "Please enter a valid date in the format YYYY-MM-DD.";
+    }
+
+    $sql = "UPDATE `$table` SET 
+                `Email` = '$Email', 
+                `Password` = '$Password', 
+                `Fullname` = '$Fullname', 
+                `Phone` = '$Phone', 
+                `DateOfBirth` = '$DateOfBirth'             
+            WHERE `BuyerUsername` = '$BuyerUsername'";
+
     if ($conn->query($sql) === TRUE) {
-        return true; // Return true if update is successful
+        return true; 
     } else {
-        return false; // Return false if there is an error
+        return "Error: " . $conn->error; 
     }
 }
+
 
 
 
@@ -259,7 +273,7 @@ function deleteEmployee($table, $employeeUsername, $conn) {
 }
 
 // Update employee details
-public function updateEmployee($table, $empUsername, $empEmail,$empPassword, $empFullName, $empPhone, $empWorkShift,  $cvPath,$empAge, $conn) {
+public function updateEmployee($table, $empUsername, $empEmail,$empPassword, $empFullName, $empPhone, $empWorkShift,  $empCV,$empAge, $conn) {
     // Update query for the employee
     $sql = "UPDATE $table SET 
                 Password = '$empPassword',                
@@ -267,7 +281,7 @@ public function updateEmployee($table, $empUsername, $empEmail,$empPassword, $em
                 Fullname = '$empFullName', 
                 Phone = '$empPhone', 
                 Workshift = '$empWorkShift', 
-                CV = '$cvPath',
+                CV = '$empCV',
                 Age = '$empAge'
             WHERE EmployeeUsername = '$empUsername'";
 
