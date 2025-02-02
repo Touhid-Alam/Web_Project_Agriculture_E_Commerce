@@ -53,5 +53,6 @@ $employeeDetails = $_SESSION['employeeDetails'];
             <button type="submit">Save Changes</button>
         </form>
     </div>
+    <script src="../js/employee_update_profile_validation.js"></script>
 </body>
 </html>

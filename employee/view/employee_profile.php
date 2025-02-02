@@ -66,5 +66,6 @@ $employeeDetails = $_SESSION['employeeDetails'];
             <p>Employee details not found.</p>
         <?php endif; ?>
     </div>
+    
 </body>
 </html>

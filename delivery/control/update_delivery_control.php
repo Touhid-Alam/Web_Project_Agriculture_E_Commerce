@@ -5,7 +5,7 @@ if (session_status() === PHP_SESSION_NONE) {
 require_once('../model/db.php');
 
 if (!isset($_SESSION['username'])) {
-    header("Location: delivery_login.php");
+    header("Location: ../../layout/view/login.php");
     exit;
 }
 

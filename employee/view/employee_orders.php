@@ -66,5 +66,6 @@ $deliverymen = $_SESSION['deliverymen'];
             <p>No pending orders found.</p>
         <?php endif; ?>
     </div>
+    <script src="../js/employee_orders_validation.js"></script>
 </body>
 </html>

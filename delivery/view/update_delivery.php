@@ -1,19 +1,17 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+session_start();
+include('../control/update_delivery_control.php');
 
+// Ensure the user is logged in
 if (!isset($_SESSION['username'])) {
-    header("Location: delivery_login.php");
+    header("Location: ../../layout/view/login.php");
     exit;
 }
 
-if (!isset($_SESSION['delivery'])) {
-    header("Location: ../control/update_delivery_control.php?delivery_id=" . $_GET['delivery_id']);
-    exit;
-}
-
-$delivery = $_SESSION['delivery'];
+// Fetch delivery details from session
+$delivery = isset($_SESSION['delivery']) ? $_SESSION['delivery'] : null;
+$error = isset($_SESSION['error_message']) ? $_SESSION['error_message'] : null;
+unset($_SESSION['error_message']); // Clear the error message after fetching it
 ?>
 
 <!DOCTYPE html>
@@ -23,8 +21,10 @@ $delivery = $_SESSION['delivery'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Delivery Profile</title>
     <link rel="stylesheet" type="text/css" href="../css/deliver_profile.css">
+    <script src="../js/update_delivery.js"></script>
 </head>
 <body>
+
     <div class="navbar">
         <a href="delivery_profile.php">Profile</a>
         <a href="delivery_orders.php">Orders</a>
@@ -32,63 +32,43 @@ $delivery = $_SESSION['delivery'];
     </div>
 
     <div class="main-content">
-        <h2>Update Delivery Profile</h2>
-        <form action="../control/update_delivery_control.php" method="POST" class="update-form">
+        <h1>Update Delivery Profile</h1>
+
+        <?php if ($error): ?>
+        <div class="error"><?php echo htmlspecialchars($error); ?></div>
+        <?php endif; ?>
+
+        <form method="post" action="../control/update_delivery_control.php" class="update-form">
             <input type="hidden" name="delivery_id" value="<?php echo htmlspecialchars($delivery['DeliveryUsername']); ?>">
-            <div class="profile-item">
-                <label for="fullName"><strong>Full Name:</strong></label>
-                <input type="text" id="fullName" name="fullName" value="<?php echo htmlspecialchars($delivery['Fullname']); ?>" required>
-            </div>
-            <div class="profile-item">
-                <label for="email"><strong>Email:</strong></label>
-                <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($delivery['Email']); ?>" required>
-            </div>
-            <div class="profile-item">
-                <label for="phone"><strong>Phone:</strong></label>
-                <input type="text" id="phone" name="phone" value="<?php echo htmlspecialchars($delivery['Phone']); ?>" required>
-            </div>
-            <div class="profile-item">
-                <label for="vehicle"><strong>Vehicle:</strong></label>
-                <input type="text" id="vehicle" name="vehicle" value="<?php echo htmlspecialchars($delivery['Vehicle']); ?>" required>
-            </div>
-            <div class="profile-item">
-                <label for="age"><strong>Age:</strong></label>
-                <input type="text" id="age" name="age" value="<?php echo htmlspecialchars($delivery['Age']); ?>" required>
-            </div>
-            <button type="submit">Save Changes</button>
+            <table class="update-table">
+                <tr>
+                    <td><label for="fullName">Full Name:</label></td>
+                    <td><input type="text" name="fullName" value="<?php echo htmlspecialchars($delivery['Fullname']); ?>"></td>
+                </tr>
+                <tr>
+                    <td><label for="email">Email:</label></td>
+                    <td><input type="text" name="email" value="<?php echo htmlspecialchars($delivery['Email']); ?>"></td>
+                </tr>
+                <tr>
+                    <td><label for="phone">Phone:</label></td>
+                    <td><input type="text" name="phone" value="<?php echo htmlspecialchars($delivery['Phone']); ?>"></td>
+                </tr>
+                <tr>
+                    <td><label for="vehicle">Vehicle:</label></td>
+                    <td><input type="text" name="vehicle" value="<?php echo htmlspecialchars($delivery['Vehicle']); ?>"></td>
+                </tr>
+                <tr>
+                    <td><label for="age">Age:</label></td>
+                    <td><input type="text" name="age" value="<?php echo htmlspecialchars($delivery['Age']); ?>"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><button type="submit" name="updateDelivery">Update</button></td>
+                </tr>
+            </table>
         </form>
+
+        <a href="delivery_profile.php">Back to Profile</a>
     </div>
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const updateForm = document.querySelector(".update-form");
-        updateForm.addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevent the default form submission
 
-            const fullName = document.getElementById("fullName").value.trim();
-            const email = document.getElementById("email").value.trim();
-            const phone = document.getElementById("phone").value.trim();
-            const vehicle = document.getElementById("vehicle").value.trim();
-            const age = document.getElementById("age").value.trim();
-
-            if (fullName === "" || email === "" || phone === "" || vehicle === "" || age === "") {
-                alert("Please fill in all fields.");
-                return;
-            }
-
-            const xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    alert("Profile updated successfully.");
-                }
-            };
-
-            xhr.open("POST", updateForm.action, true);
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-            const data = `fullName=${encodeURIComponent(fullName)}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(phone)}&vehicle=${encodeURIComponent(vehicle)}&age=${encodeURIComponent(age)}`;
-            xhr.send(data);
-        });
-    });
-    </script>
 </body>
 </html>
