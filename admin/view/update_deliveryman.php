@@ -64,6 +64,8 @@ if (isset($_GET['DeliveryUsername'])) {
 
 <div class="main-content">
 <fieldset>
+<script src="../adminjs/delivery_update.js"></script>
+
     <h1>Update Delivery Man Information</h1>
     <form action="../control/update_deliveryman.php" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="DeliveryUsername" value="<?php echo htmlspecialchars($row['DeliveryUsername']); ?>">
@@ -72,22 +74,28 @@ if (isset($_GET['DeliveryUsername'])) {
             <tr>
                 <td><label for="password">Password:</label></td>
                 <td><input type="password" id="password" name="Password" ></td>
+                <td><p id="PasswordError"></p></td>
             </tr>
             <tr>
                 <td><label for="email">Email:</label></td>
                 <td><input type="email" id="email" name="Email" ></td>
+                <td><p id="EmailError"></p></td>
             </tr>
             <tr>
                 <td><label for="fullname">Full Name:</label></td>
                 <td><input type="text" id="fullname" name="Fullname" ></td>
+                <td><p id="FullnameError"></p></td>    
             </tr>
             <tr>
                 <td><label for="Phone">Phone Number:</label></td>
                 <td><input type="tel" id="Phone" name="Phone" ></td>
+                <td><p id="PhoneError"></p><td>
             </tr>
             <tr>
                 <td><label for="Age">Age:</label></td>
                 <td><input type="number" id="Age" name="Age" ></td>
+                <td><p id="AgeError"></p></td>
+                
             </tr>
             <tr>
                 <td><label for="Vehicle">Do you have a vehicle?</label></td>
@@ -97,10 +105,12 @@ if (isset($_GET['DeliveryUsername'])) {
                     <input type="radio" id="vehicleNo" name="Vehicle" value="no" >
                     <label for="vehicleNo">No</label>
                 </td>
+                <td><p id="VehicleError"></p></td>
             </tr>
             <tr>
                 <td><label for="CV">CV:</label></td>
                 <td><input type="file" id="CV" name="CV" accept=".pdf,.doc,.docx"></td>
+                <td><p id="CVError"></p></td>
             </tr>
             
             <tr>

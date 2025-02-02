@@ -60,6 +60,7 @@ if (isset($_GET['BuyerUsername'])) {
   
 <div class="main-content">
     <fieldset>
+    <script src="../adminJS/buyer_update.js"></script>
     <h1>Update Buyer Information</h1>
     <form action="../control/update_buyer.php" method="POST">
         <input type="hidden" name="BuyerUsername" value="<?php echo htmlspecialchars($row['BuyerUsername']); ?>">
@@ -68,22 +69,27 @@ if (isset($_GET['BuyerUsername'])) {
             <tr>
                 <td><label for="email">Email:</label></td>
                 <td><input type="email" id="email" name="Email" ></td>
+                <td><p id="EmailError"></p></td>
             </tr>
             <tr>
                 <td><label for="password">Password:</label></td>
                 <td><input type="password" id="password" name="Password"></td>
+                <td><p id="PasswordError"></p></td>
             </tr>
             <tr>
                 <td><label for="fullName">Full Name:</label></td>
                 <td><input type="text" id="fullName" name="Fullname"></td>
+                <td><p id="FullnameError"></p></td>
             </tr>
             <tr>
                 <td><label for="phone">Phone Number:</label></td>
                 <td><input type="tel" id="phone" name="Phone" ></td>
+                <td><p id="PhoneError"></p></td>
             </tr>
             <tr>
                 <td><label for="dateofbirth">Date of Birth:</label></td>
                 <td><input type="date" id="dateofbirth" name="DateOfBirth"></td>
+                <td><p id="DOBError" ></p></td>
             </tr>
             <tr>
             <tr>

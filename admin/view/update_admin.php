@@ -55,6 +55,7 @@ if (isset($_GET['AdminUsername'])) {
 
 <div class="main-content">
     <fieldset>
+    <script src="../adminJS/admin_update.js"></script>
         <h1>Update Admin Information</h1>
         <form action="../control/update_admin.php" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="AdminUsername" value="<?php echo htmlspecialchars($row['AdminUsername']); ?>">
@@ -63,18 +64,22 @@ if (isset($_GET['AdminUsername'])) {
                 <tr>
                     <td><label for="password">Password:</label></td>
                     <td><input type="password" id="password" name="Password" ></td>
+                    <td><p id="PasswordlError"></p></td>
                 </tr>
                 <tr>
                     <td><label for="email">Email:</label></td>
                     <td><input type="email" id="email" name="Email" ></td>
+                    <td><p id="EmailError"></p></td>
                 </tr>
                 <tr>
                     <td><label for="fullname">Full Name:</label></td>
                     <td><input type="text" id="fullname" name="Fullname" ></td>
+                    <td><p id="FullnameError"></p></td>
                 </tr>
                 <tr>
                     <td><label for="NID">NID Proof:</label></td>
                     <td><input type="file" id="NID" name="NID" accept=".jpg,.jpeg,.png,.pdf"></td>
+                    <td><p id="NIDlError"></p></td>
                 </tr>
                 <tr>
                     <td colspan="2"><button type="submit" name="update">Update Admin</button></td>

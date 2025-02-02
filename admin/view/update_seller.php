@@ -26,6 +26,7 @@ if (isset($_GET['SellerUsername'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <link rel="stylesheet" href="../css/info.css">
     <title>Update Seller Information</title>
 </head>
@@ -66,6 +67,7 @@ if (isset($_GET['SellerUsername'])) {
 
 
     <div class="main-content">
+    <script src="../adminJS/seller_update.js"></script>
     <fieldset>
         <h1>Update Seller Information</h1>
         <form action="../control/update_seller.php" method="POST" enctype="multipart/form-data">
@@ -75,14 +77,17 @@ if (isset($_GET['SellerUsername'])) {
                 <tr>
                     <td><label for="password">Password:</label></td>
                     <td><input type="password" id="password" name="Password"></td>
+                    <td><p id="PasswordError"></p></td>
                 </tr>
                 <tr>
                     <td><label for="email">Email:</label></td>
                     <td><input type="email" id="email" name="Email"></td>
+                    <td><p id="EmailError"></p></td>
                 </tr>
                 <tr>
                     <td><label for="businessName">Business Name:</label></td>
                     <td><input type="text" id="businessName" name="BusinessName"></td>
+                    <td><p id="BusinessNameError"></p></td>
                 </tr>
                 <tr>
                     <td><label for="productType">Product Type:</label></td>
@@ -93,19 +98,24 @@ if (isset($_GET['SellerUsername'])) {
                             <option value="Dairy Products">Dairy Products</option>
                             <option value="Processed Goods">Processed Goods</option>
                         </select>
+                        
                     </td>
+                    <td><p id="ProductTypeError"></p></td>
                 </tr>
                 <tr>
                     <td><label for="fullName">Full Name:</label></td>
                     <td><input type="text" id="fullName" name="Fullname"></td>
+                    <td><p id="FullnameError"></p></td>
                 </tr>
                 <tr>
                     <td><label for="phone">Phone Number:</label></td>
                     <td><input type="tel" id="phone" name="Phone"></td>
+                    <td><p id="PhoneError"></p>
                 </tr>
                 <tr>
                     <td><label for="address">Address:</label></td>
                     <td><input type="text" id="address" name="Address"></td>
+                     <td><p id="AddressError"></p></td>
                 </tr>
                 <tr>
                     <td><label for="districts">District:</label></td>
@@ -119,10 +129,12 @@ if (isset($_GET['SellerUsername'])) {
                             <option value="KHULNA">KHULNA</option>
                         </select>
                     </td>
+                    
                 </tr>
                 <tr>
                     <td><label for="idProof">ID Proof:</label></td>
                     <td><input type="file" id="idProof" name="idProof"></td>
+                    <td><p id="NIDError"></p></td>
                 </tr>
                 <tr>
                     <td colspan="2"><button type="submit" name="update">Update Seller</button></td>

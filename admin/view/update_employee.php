@@ -64,6 +64,8 @@ if (isset($_GET['EmployeeUsername'])) {
 
 <div="main-content">
     <fieldset>
+    <script src="../adminJS/employee_update.js"></script>
+
         <h1>Update Employee Information</h1>
         <form action="../control/update_employee.php" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="EmployeeUsername" value="<?php echo htmlspecialchars($row['EmployeeUsername']); ?>">
@@ -72,34 +74,42 @@ if (isset($_GET['EmployeeUsername'])) {
                 <tr>
                     <td><label for="empPassword">Password:</label></td>
                     <td><input type="password" id="empPassword" name="password"></td>
+                    <td><p id="PasswordError"></p></td>
                 </tr>
                 <tr>
                     <td><label for="empEmail">Email:</label></td>
                     <td><input type="email" id="empEmail" name="email"></td>
+                    <td><p id="EmailError"></p></td>
                 </tr>
                 <tr>
                     <td><label for="empFullName">Full Name:</label></td>
                     <td><input type="text" id="empFullName" name="fullName"></td>
+                    <td><p id="FullnameError"></p></td>
                 </tr>
                 <tr>
                     <td><label for="empPhone">Phone Number:</label></td>
                     <td><input type="tel" id="empPhone" name="phone"></td>
+                    <td><p id="PhoneError"></p>
                 </tr>
                 <tr>
                     <td><label for="empWorkShift">Work Shift:</label></td>
                     <td><input type="text" id="empWorkShift" name="workShift"></td>
+                    <td><p id="ShiftError"></p></td>
                 </tr>
                 <tr>
                     <td><label for="empCV">CV:</label></td>
                     <td><input type="file" id="empCV" name="empCV" accept=".pdf,.doc,.docx"></td>
+                    <td><p id="EmpCVError"></p></td>
                 </tr>
                 <tr>
                     <td><label for="empAge">Age:</label></td>
                     <td><input type="number" id="empAge" name="age"></td>
+                    <td><p id="EmpAgeError"></p></td>
                 </tr>
                 
                 <tr>
                     <td colspan="2"><button type="submit" name="update">Update Employee</button></td>
+
                 </tr>
             </table>
         </form>
