@@ -46,7 +46,7 @@ $accountDetails = getBuyerAccountDetails($buyerUsername);
             </div>
             <div class="profile-item">
                 <label for="addBalance">Add Balance:</label>
-                <input type="number" id="addBalance" name="addBalance" required>
+                <input type="number" id="addBalance" name="addBalance" >
             </div>
             <button type="submit">Add Balance</button>
         </form>

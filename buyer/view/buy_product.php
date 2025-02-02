@@ -24,10 +24,12 @@ $buyerUsername = $_SESSION['username'];
 </head>
 <body>
     <div class="navbar">
-        <a href="buyer_profile.php">Profile</a>
-        <a href="order_history.php">Order History</a>
+    <a href="buyer_profile.php">Profile</a>
+        <a href="edit_profile.php">Edit Profile</a>
         <a href="buy_product.php">Buy Products</a>
-        <a href="../../layout/view/login.php">Logout</a>
+        <a href="manage_balance.php">Manage Balance</a>
+        <a href="order_history.php">Order History</a>
+        <a class="logout-button" href="../../layout/view/login.php">LogOut</a>
     </div>
 
     <div class="main-content">

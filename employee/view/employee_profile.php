@@ -4,7 +4,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 if (!isset($_SESSION['username'])) {
-    header("Location: employee_login.php");
+    header("Location:../../layout/view/login.php");
     exit;
 }
 

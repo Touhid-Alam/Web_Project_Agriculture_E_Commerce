@@ -35,10 +35,8 @@ if (!isset($_SESSION['username'])) {
         <button type="submit">Search</button>
         <button id="refreshButton">Refresh</button>
     </form>
-
+    
     <!-- Refresh Button -->
-
-
     <div id="productList">
         <!-- Product list will be loaded here via AJAX -->
     </div>

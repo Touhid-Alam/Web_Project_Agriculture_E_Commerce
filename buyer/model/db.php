@@ -182,7 +182,7 @@ public function updateBuyerProfile($username, $fullName, $email, $phone, $dateOf
 
     // Function to fetch the order history for the buyer
     function getOrderHistory($buyerUsername, $connobject) {
-        $query = "SELECT * FROM orders WHERE BuyerUsername = '$buyerUsername'";
+        $query = "SELECT OID, TotalPrice, Status FROM orders WHERE BuyerUsername = '$buyerUsername'";
         $result = $connobject->query($query);
         $orders = [];
         

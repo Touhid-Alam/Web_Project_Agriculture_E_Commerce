@@ -4,7 +4,7 @@ include('../control/delivery_orders_control.php');
 
 // Ensure the user is logged in
 if (!isset($_SESSION['username'])) {
-    header("Location: delivery_login.php");
+    header("Location: ../../layout/login.php");
     exit;
 }
 ?>
@@ -16,14 +16,14 @@ if (!isset($_SESSION['username'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Delivery Orders</title>
     <link rel="stylesheet" type="text/css" href="../css/deliver_profile.css">
-    <script src="../js/update_delivery.js"></script>
+    <script src="../js/delivery_orders.js"></script>
 </head>
 <body>
     <div class="navbar">
         <a href="delivery_profile.php">Profile</a>
         <a href="delivery_orders.php">Orders</a>
         <div class="logout-container">
-            <form action="../control/delivery_logout.php" method="POST">
+            <form action="../../layout/view/login.php" method="POST">
                 <button type="submit" class="logout-button">Logout</button>
             </form>
         </div>
@@ -48,11 +48,13 @@ if (!isset($_SESSION['username'])) {
                             <td><?php echo htmlspecialchars($order['BuyerUsername']); ?></td>
                             <td><?php echo htmlspecialchars($order['TotalPrice']); ?></td>
                             <td>
-                                <input type="checkbox" name="status_<?php echo $order['OID']; ?>" id="status_<?php echo $order['OID']; ?>" <?php echo isset($order['status']) && $order['status'] === 'completed' ? 'checked' : ''; ?> onchange="toggleButtonText(<?php echo $order['OID']; ?>)">
-                                <input type="hidden" name="order_id" value="<?php echo htmlspecialchars($order['OID']); ?>">
-                                <input type="hidden" name="status" id="hidden_status_<?php echo $order['OID']; ?>" value="<?php echo isset($order['status']) && $order['status'] === 'completed' ? 'completed' : 'pending'; ?>">
-                                <button type="button" id="button_<?php echo $order['OID']; ?>" onclick="updateStatus(<?php echo $order['OID']; ?>)"><?php echo isset($order['status']) && $order['status'] === 'completed' ? 'Complete' : 'Update Status'; ?></button>
-                                <button type="button" onclick="submitOrder(<?php echo $order['OID']; ?>)">Submit</button>
+                                <form method="POST" action="../control/delivery_orders_control.php">
+                                    <input type="checkbox" name="status" id="status_<?php echo $order['OID']; ?>" value="completed" <?php echo isset($order['status']) && $order['status'] === 'completed' ? 'checked' : ''; ?> onchange="document.getElementById('hidden_status_<?php echo $order['OID']; ?>').value = this.checked ? 'completed' : 'pending';">
+                                    <input type="hidden" name="order_id" value="<?php echo htmlspecialchars($order['OID']); ?>">
+                                    <input type="hidden" name="action" value="update_status">
+                                    <input type="hidden" name="status" id="hidden_status_<?php echo $order['OID']; ?>" value="<?php echo isset($order['status']) && $order['status'] === 'completed' ? 'completed' : 'pending'; ?>">
+                                    <button type="submit" id="button_<?php echo $order['OID']; ?>"><?php echo isset($order['status']) && $order['status'] === 'completed' ? 'Complete' : 'Update Status'; ?></button>
+                                </form>
                             </td>
                         </tr>
                     <?php endforeach; ?>

@@ -21,37 +21,41 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['order_id']) && isset(
 
     if ($_POST['action'] === 'update_status') {
         $result = $db->updateDeliveryStatus($orderId, $status, $conn);
-
+    
         if ($result) {
             $_SESSION['success_message'] = "Delivery status updated successfully.";
-            // Remove the order from the pending orders list if completed
-            if ($status === 'completed') {
-                $pendingOrders = array_filter($pendingOrders, function($order) use ($orderId) {
-                    return $order['OID'] !== $orderId;
-                });
-                // Pass the completed order to the admin
-                if (!isset($_SESSION['completedOrders'])) {
-                    $_SESSION['completedOrders'] = [];
-                }
-                $_SESSION['completedOrders'][] = $orderId;
-            }
+    
+            // Refresh the pending orders list after the update
+            $pendingOrders = $db->getPendingOrdersForDeliveryman($_SESSION['username'], $conn);
         } else {
             $_SESSION['error_message'] = "Failed to update delivery status.";
         }
-
+    
         header("Location: ../view/delivery_orders.php");
         exit();
-    } elseif ($_POST['action'] === 'submit_order') {
-        // Update the order status to completed and notify the admin
+    } elseif ($_POST['action'] === 'notify_admin') {
+        // Update the order status to 'completed' in the database
         $result = $db->updateDeliveryStatus($orderId, 'completed', $conn);
+        
         if ($result) {
-            $_SESSION['success_message'] = "Order submitted successfully.";
-            // Notify the admin (you can implement the notification logic here)
+            // Display a table indicating that the order is complete
+            echo "<table border='1'>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Status</th>
+                    </tr>
+                    <tr>
+                        <td>{$orderId}</td>
+                        <td>Completed</td>
+                    </tr>
+                  </table>";
+            
+            // Refresh the pending orders list after the update
+            $pendingOrders = $db->getPendingOrdersForDeliveryman($_SESSION['username'], $conn);
+            
         } else {
-            $_SESSION['error_message'] = "Failed to submit order.";
+            echo "Failed to update order ID $orderId to completed.";
         }
-
-        header("Location: ../view/delivery_orders.php");
         exit();
     }
 }

@@ -16,18 +16,11 @@ $adminUsername = $_SESSION['username'];
     <link rel="stylesheet" href="../css/info.css">
 </head>
 <body>
-
-
-    
-
 <div class="main-content">
-    <h1>Welcome, <?php echo $adminUsername; ?></h1>
+    <h1>Welcome, <?php echo htmlspecialchars($adminUsername); ?></h1>
     
-        <a href="../view/admin_info.php">View Admin Info</a>
-        <a href="../view/admin_profile.php">Admin Profile</a>
-       
-       
-
+    <a href="../view/admin_info.php">View Admin Info</a>
+    <a href="../view/admin_profile.php">Admin Profile</a>
 
     <h2>Dashboard Features</h2>
     <div class="navbar">
@@ -39,48 +32,14 @@ $adminUsername = $_SESSION['username'];
         <a href="../../layout/view/login.php">Logout</a>
     </div>
     
-   <table> 
-    <form action="../view/admin_dashboard.php" method="GET">
-        <button type="submit" name="viewAllo" value="true">View All Orders</button>
-    </form>
-    
     <form action="../view/admin_dashboard.php" method="GET">
         <button type="submit" name="viewAllp" value="true">View All Products</button>
-        
+        <button type="submit" name="viewAllo" value="true">View All Orders</button>
     </form>
+
     <?php
     include('../control/all_products&orders.php');
     ?>
-   </table>
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
 </body>
 </html>

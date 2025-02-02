@@ -1,14 +1,11 @@
 /* General Styles */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #f3f7ed;
     color: #333;
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
 }
 
 /* Navbar */
@@ -19,8 +16,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    height: 100vh;
-    position: fixed;
+    height: 100vh; /* Full height */
+    position: fixed; /* Fixed position */
     top: 0;
     left: 0;
 }
@@ -35,16 +32,14 @@ body {
     border-radius: 5px;
 }
 
-/* Removed unwanted color from navbar buttons */
 .navbar a:hover {
-    font-weight: bold;
+    font-weight: bold; /* Bold font on hover */
 }
 
 /* Main Content */
 .main-content {
-    margin-left: 220px;
+    margin-left: 250px; /* Adjust for the navbar width and add space */
     padding: 20px;
-    width: calc(100% - 220px);
 }
 
 h1, h2 {
@@ -54,52 +49,34 @@ h1, h2 {
 }
 
 form {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
     max-width: 600px;
     margin: 20px auto;
-    text-align: left;
-}
-
-label {
-    display: block;
-    margin-bottom: 5px;
+    text-align: center;
 }
 
 input[type="text"] {
-    width: 100%;
-    padding: 8px;
+    width: 80%;
+    padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
     box-sizing: border-box;
     font-size: 16px;
 }
 
 button {
-    width: 100%;
-    padding: 10px;
-    background-color: #28a745;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
     border: none;
-    border-radius: 3px;
-    color: #fff;
-    font-size: 16px;
+    border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 button:hover {
-    background-color: #218838;
+    background-color: #45a049;
     transform: scale(1.03);
-}
-
-.error {
-    color: red;
-    margin-bottom: 10px;
-    text-align: center;
 }
 
 table {
@@ -119,22 +96,6 @@ th, td {
 th {
     background-color: #4CAF50;
     color: #fff;
-}
-
-a {
-    display: block;
-    text-align: center;
-    margin-top: 10px;
-    color: #007bff;
-    text-decoration: none;
-    transition: transform 0.3s ease;
-    margin: 20px auto;
-    width: 100px;
-}
-
-a:hover {
-    text-decoration: underline;
-    transform: scale(1.03);
 }
 
 /* Profile Card */
@@ -220,26 +181,14 @@ a:hover {
     transform: scale(1.03);
 }
 
-.update-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-}
-
-.update-table td {
-    padding: 10px;
-    border: 1px solid #ddd;
-}
-
-/* Logout Button */
 .logout-container {
-    margin-top: 10px;
+    margin-top: 10px; /* Adjust margin to place it right after the order button */
     width: 100%;
 }
 
 .logout-button {
     display: block;
-    background-color: #333; /* Changed from green to neutral dark */
+    background-color: #4CAF50;
     color: white;
     padding: 10px;
     border: none;
@@ -252,6 +201,6 @@ a:hover {
 }
 
 .logout-button:hover {
-    background-color: #555;
+    background-color: #2E7D32;
     transform: scale(1.03);
 }

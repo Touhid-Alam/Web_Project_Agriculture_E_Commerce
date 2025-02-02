@@ -293,10 +293,19 @@ public function updateEmployee($table, $empUsername, $empEmail,$empPassword, $em
     }
 }
 
+// Method to show all products
+function showAllProducts($table, $connobject) {
+    $sql = "SELECT * FROM $table";
+    $result = $connobject->query($sql);
+    return $result;
+}
 
-
-
-
+// Method to show all orders
+function showAllOrders($table, $connobject) {
+    $sql = "SELECT * FROM $table";
+    $result = $connobject->query($sql);
+    return $result;
+}
 
     
 }

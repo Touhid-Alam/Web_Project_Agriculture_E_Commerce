@@ -23,7 +23,7 @@ $buyerUsername = $_SESSION['username'];
 </head>
 <body>
     <div class="navbar">
-        <a href="buyer_profile.php">Profile</a>
+    <a href="buyer_profile.php">Profile</a>
         <a href="edit_profile.php">Edit Profile</a>
         <a href="buy_product.php">Buy Products</a>
         <a href="manage_balance.php">Manage Balance</a>
@@ -38,23 +38,23 @@ $buyerUsername = $_SESSION['username'];
         <form method="post">
             <div class="profile-item">
                 <label for="fullName">Full Name:</label>
-                <input type="text" id="fullName" name="fullName" value="<?php echo htmlspecialchars($buyer['fullName'] ?? ''); ?>" required>
+                <input type="text" id="fullName" name="fullName" value="<?php echo htmlspecialchars($buyer['fullName'] ?? ''); ?>" >
             </div>
             <div class="profile-item">
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($buyer['email'] ?? ''); ?>" required>
+                <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($buyer['email'] ?? ''); ?>" >
             </div>
             <div class="profile-item">
                 <label for="phone">Phone:</label>
-                <input type="text" id="phone" name="phone" value="<?php echo htmlspecialchars($buyer['phone'] ?? ''); ?>" required>
+                <input type="text" id="phone" name="phone" value="<?php echo htmlspecialchars($buyer['phone'] ?? ''); ?>" >
             </div>
             <div class="profile-item">
                 <label for="dateOfBirth">Date of Birth:</label>
-                <input type="date" id="dateOfBirth" name="dateOfBirth" value="<?php echo htmlspecialchars($buyer['dateOfBirth'] ?? ''); ?>" required>
+                <input type="date" id="dateOfBirth" name="dateOfBirth" value="<?php echo htmlspecialchars($buyer['dateOfBirth'] ?? ''); ?>" >
             </div>
             <div class="profile-item">
                 <label for="password">Password:</label>
-                <input type="password" id="password" name="password" value="<?php echo htmlspecialchars($buyer['password'] ?? ''); ?>" required>
+                <input type="password" id="password" name="password" value="<?php echo htmlspecialchars($buyer['password'] ?? ''); ?>" >
             </div>
             <button type="submit">Update Profile</button>
         </form>
