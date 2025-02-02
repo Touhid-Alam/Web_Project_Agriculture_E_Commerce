@@ -23,12 +23,8 @@ $deliveryDetails = $_SESSION['deliveryDetails'];
     <div class="navbar">
         <a href="delivery_profile.php">Profile</a>
         <a href="delivery_orders.php">Orders</a>
-        <div class="logout-container">
-            <form action="../control/delivery_logout_control.php" method="POST">
-                <input type="hidden" name="logout" value="1">
-                <button type="submit" class="logout-button">Logout</button>
-            </form>
-        </div>
+        <a href="../../layout/view/login.php">Logout</a>
+        
     </div>
 
     <div class="main-content">
