@@ -10,16 +10,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update'])) {
     $empWorkShift = trim($_POST['workShift']);
     $empAge = trim($_POST['age']);
 
-    $cvPath = ''; // Default empty path
-    if (isset($_FILES['idProof']) && $_FILES['idProof']['error'] == 0) {
+    $empCV = ''; // Default empty path
+    if (isset($_FILES['empCV']) && $_FILES['empCV']['error'] == 0) {
         $targetDir = "../../images/";
-        $fileExtension = pathinfo($_FILES['idProof']['name'], PATHINFO_EXTENSION); // Get file extension
+        $fileExtension = pathinfo($_FILES['empCV']['name'], PATHINFO_EXTENSION); // Get file extension
         $newFileName =  $empUsername . '.' . $fileExtension; // Rename file to the username
         $targetFile = $targetDir . $newFileName;
 
         // Move the uploaded file to the target directory
-        if (move_uploaded_file($_FILES['idProof']['tmp_name'], $targetFile)) {
-            $cvPath = $targetFile; // Store the new file path
+        if (move_uploaded_file($_FILES['empCV']['tmp_name'], $targetFile)) {
+            $empCV = $targetFile; // Store the new file path
         } else {
             $errors[] = "Sorry, there was an error uploading your file.";
         }
@@ -33,13 +33,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update'])) {
     $updateSuccess = $mydb->updateEmployee(
         "employee",          // Table name
         $empUsername,        // The employee's username
-        $empPassword,        // New password (Hash it before storing in production)
-        $empEmail,           // New email
+              // New password (Hash it before storing in production)
+        $empEmail,
+        $empPassword, 
+        $empFullName,             // New email
         $empPhone,           // New phone number
-        $empFullName,        // New full name
+              // New full name
         $empWorkShift,       // New work shift
                     // New age
-        $cvPath, 
+        $empCV, 
         $empAge,            // Storing the file path for CV
         $connobject          // Database connection
     );

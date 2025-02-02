@@ -8,18 +8,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update'])) {
     $Fullname = trim($_POST['Fullname']);
     $Phone = trim($_POST['Phone']);
     $Age = trim($_POST['Age']);
-    $Vehicle = isset($_POST['vehicle']) ? trim($_POST['vehicle']) : '';
+    $vehicle = isset($_POST['Vehicle']) ? ($_POST['Vehicle'] === 'yes' ? 'yes' : 'no') : null;
+
     
     // Handle file upload for CV
     $CV = ''; // Default empty path
-    if (isset($_FILES['idProof']) && $_FILES['idProof']['error'] == 0) {
+    if (isset($_FILES['CV']) && $_FILES['CV']['error'] == 0) {
         $targetDir = "../../images/";
-        $fileExtension = pathinfo($_FILES['idProof']['name'], PATHINFO_EXTENSION); // Get file extension
+        $fileExtension = pathinfo($_FILES['CV']['name'], PATHINFO_EXTENSION); // Get file extension
         $newFileName = $DeliveryUsername . '.' . $fileExtension; // Rename file to the username
         $targetFile = $targetDir . $newFileName;
 
         // Move the uploaded file to the target directory
-        if (move_uploaded_file($_FILES['idProof']['tmp_name'], $targetFile)) {
+        if (move_uploaded_file($_FILES['CV']['tmp_name'], $targetFile)) {
             $CV = $targetFile; // Store the new file path
         } else {
             $errors[] = "Sorry, there was an error uploading your file.";
@@ -38,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update'])) {
         $Password,
         $Fullname,
         $Phone,        
-        $Vehicle,
+        $vehicle,
         $CV,
         $Age,
         $connobject

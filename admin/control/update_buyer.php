@@ -31,11 +31,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update'])) {
     }
 
     // Hash the password if it's provided
-    if (!empty($Password)) {
-        $Password = password_hash($Password, PASSWORD_DEFAULT);  // Hash the password before storing it
-    } else {
-        // If no new password is provided, keep the old one
-        $Password = null;
+    if (empty($Password)) {
+        echo "Password is required.";
+    } elseif (!preg_match('/[@#$&]/', $Password)) {
+        echo "Password must contain at least one special character (@, #, $, or &).";
+    }
+
+    if (empty($DateOfBirth) || !DateTime::createFromFormat('Y-m-d', $DateOfBirth)) {
+        $errors[] = "Please enter a valid date in the format YYYY-MM-DD.";
     }
 
     // Create a database connection
