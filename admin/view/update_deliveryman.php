@@ -27,14 +27,14 @@ if (isset($_GET['DeliveryUsername'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Delivery Man Information</title>
-    <link rel="stylesheet" type="text/css" href="../css/mystyle.css">
+    <link rel="stylesheet" href="../css/info.css">
 </head>
 <body>
 
-<h2>Update Delivery Man Information</h2>
-
+<div class="main-content">
+    <
 <fieldset>
-    <legend>Delivery Man Details</legend>
+    <h1>Delivery Man Details</h1>
     <table border="1">
         <tr>
             <th>Field</th>
@@ -49,9 +49,22 @@ if (isset($_GET['DeliveryUsername'])) {
         <tr><td>CV:</td><td><a href="<?php echo htmlspecialchars($row['CV']); ?>" target="_blank">View CV</a></td></tr>
     </table>
 </fieldset>
+<a href="../view/delivery_info.php">Back to Delivery Man List</a>
+</div>
 
+<div class="navbar">
+        <a href="../view/admin_dashboard.php">Admin</a>
+        <a href="../view/seller_info.php">Seller Info</a>
+        <a href="../view/buyer_info.php">Buyer Info</a>
+        <a href="../view/employee_info.php">Employee Info</a>
+        <a href="../view/delivery_info.php">Delivery Man Info</a>
+        <a href="../../layout/view/login.php">Logout</a>
+    </div>
+
+
+<div class="main-content">
 <fieldset>
-    <legend>Update Delivery Man Information</legend>
+    <h1>Update Delivery Man Information</h1>
     <form action="../control/update_deliveryman.php" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="DeliveryUsername" value="<?php echo htmlspecialchars($row['DeliveryUsername']); ?>">
         
@@ -96,9 +109,9 @@ if (isset($_GET['DeliveryUsername'])) {
         </table>
     </form>
 </fieldset>
+</div>
 
-<br>
-<a href="../view/delivery_info.php">Back to Delivery Man List</a>
+
 
 </body>
 </html>

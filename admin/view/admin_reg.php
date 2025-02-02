@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Registration</title>
     <script src="../adminJS/admin_reg.js"></script>
+    <link rel="stylesheet" href="../css/admin_reg.css">
+
 </head>
 <body>
 

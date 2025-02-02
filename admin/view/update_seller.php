@@ -26,14 +26,15 @@ if (isset($_GET['SellerUsername'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/info.css">
     <title>Update Seller Information</title>
 </head>
 <body>
-
-    <h2>Update Seller Information</h2>
+<div class="main-content">
+    
     
     <fieldset>
-        <legend>Seller Details</legend>
+        <h1>Seller Details </h1>
         <table border="1">
             <tr>
                 <th>Field</th>
@@ -50,9 +51,23 @@ if (isset($_GET['SellerUsername'])) {
             <tr><td>NID:</td><td><a href="<?php echo htmlspecialchars($row['NID']); ?>" target="_blank">View ID Proof</a></td></tr>
         </table>
     </fieldset>
+    <a href="../view/seller_info.php">Back to Seller List</a>
+</div>
 
+
+    <div class="navbar">
+        <a href="../view/admin_dashboard.php">Admin</a>
+        <a href="../view/seller_info.php">Seller Info</a>
+        <a href="../view/buyer_info.php">Buyer Info</a>
+        <a href="../view/employee_info.php">Employee Info</a>
+        <a href="../view/delivery_info.php">Delivery Man Info</a>
+        <a href="../../layout/view/login.php">Logout</a>
+    </div>
+
+
+    <div class="main-content">
     <fieldset>
-        <legend>Update Seller Information</legend>
+        <h1>Update Seller Information</h1>
         <form action="../control/update_seller.php" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="SellerUsername" value="<?php echo htmlspecialchars($row['SellerUsername']); ?>">
             
@@ -117,7 +132,9 @@ if (isset($_GET['SellerUsername'])) {
     </fieldset>
 
     <br>
-    <a href="../view/seller_info.php">Back to Seller List</a>
+</div>
+   
+
 
 </body>
 </html>

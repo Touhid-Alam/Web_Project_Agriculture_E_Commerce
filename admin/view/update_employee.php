@@ -26,14 +26,15 @@ if (isset($_GET['EmployeeUsername'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/info.css">
     <title>Update Employee Information</title>
 </head>
 <body>
 
-    <h2>Update Employee Information</h2>
+    <div class="main-content">
     
     <fieldset>
-        <legend>Employee Details</legend>
+        <h1>Employee Details</h1>
         <table border="1">
             <tr>
                 <th>Field</th>
@@ -48,9 +49,22 @@ if (isset($_GET['EmployeeUsername'])) {
             <tr><td>CV:</td><td><a href="<?php echo htmlspecialchars($row['CV']); ?>" target="_blank">View CV</a></td></tr>
         </table>
     </fieldset>
+    <a href="../view/employee_info.php">Back to Employee List</a>
+    </div>
 
+    <div class="navbar">
+        <a href="../view/admin_dashboard.php">Admin</a>
+        <a href="../view/seller_info.php">Seller Info</a>
+        <a href="../view/buyer_info.php">Buyer Info</a>
+        <a href="../view/employee_info.php">Employee Info</a>
+        <a href="../view/delivery_info.php">Delivery Man Info</a>
+        <a href="../../layout/view/login.php">Logout</a>
+    </div>
+
+
+<div="main-content">
     <fieldset>
-        <legend>Update Employee Information</legend>
+        <h1>Update Employee Information</h1>
         <form action="../control/update_employee.php" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="EmployeeUsername" value="<?php echo htmlspecialchars($row['EmployeeUsername']); ?>">
             
@@ -77,7 +91,7 @@ if (isset($_GET['EmployeeUsername'])) {
                 </tr>
                 <tr>
                     <td><label for="empCV">CV:</label></td>
-                    <td><input type="file" id="empCV" name="cv" accept=".pdf,.doc,.docx"></td>
+                    <td><input type="file" id="empCV" name="empCV" accept=".pdf,.doc,.docx"></td>
                 </tr>
                 <tr>
                     <td><label for="empAge">Age:</label></td>
@@ -90,9 +104,9 @@ if (isset($_GET['EmployeeUsername'])) {
             </table>
         </form>
     </fieldset>
-
-    <br>
-    <a href="../view/employee_info.php">Back to Employee List</a>
+</div>
+   
+    
 
 </body>
 </html>

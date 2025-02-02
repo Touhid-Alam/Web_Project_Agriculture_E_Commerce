@@ -26,14 +26,14 @@ if (isset($_GET['BuyerUsername'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/info.css">
     <title>Update Buyer Information</title>
 </head>
 <body>
-
-    <h2>Update Buyer Information</h2>
-    
+<div class="main-content">
+        
     <fieldset>
-        <legend>Buyer Details</legend>
+        <h1>Buyer Details</h1>
         <table border="1">
             <tr>
                 <th>Field</th>
@@ -46,9 +46,21 @@ if (isset($_GET['BuyerUsername'])) {
             <tr><td>Date of Birth:</td><td><?php echo htmlspecialchars($row['DateOfBirth']); ?></td></tr>
         </table>
     </fieldset>
+    <a href="../view/buyer_info.php">Back to Buyer List</a>
+</div>
 
+<div class="navbar">
+        <a href="../view/admin_dashboard.php">Admin</a>
+        <a href="../view/seller_info.php">Seller Info</a>
+        <a href="../view/buyer_info.php">Buyer Info</a>
+        <a href="../view/employee_info.php">Employee Info</a>
+        <a href="../view/delivery_info.php">Delivery</a>
+        <a href="../../layout/view/login.php">Logout</a>
+    </div>
+  
+<div class="main-content">
     <fieldset>
-    <legend>Update Buyer Information</legend>
+    <h1>Update Buyer Information</h1>
     <form action="../control/update_buyer.php" method="POST">
         <input type="hidden" name="BuyerUsername" value="<?php echo htmlspecialchars($row['BuyerUsername']); ?>">
 
@@ -74,15 +86,17 @@ if (isset($_GET['BuyerUsername'])) {
                 <td><input type="date" id="dateofbirth" name="DateOfBirth"></td>
             </tr>
             <tr>
-                <td><button type="submit" name="update">Update Buyer</button></td>
+            <tr>
+                    <td colspan="2"><button type="submit" name="update">Update Buyer</button></td>
+                </tr>
             </tr>
         </table>
     </form>
 </fieldset>
+</div>
 
-
-    <br>
-    <a href="../view/buyer_info.php">Back to Buyer List</a>
+   
+    
 
 </body>
 </html>
