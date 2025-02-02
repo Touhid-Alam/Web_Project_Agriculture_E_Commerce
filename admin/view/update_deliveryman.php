@@ -74,27 +74,27 @@ if (isset($_GET['DeliveryUsername'])) {
             <tr>
                 <td><label for="password">Password:</label></td>
                 <td><input type="password" id="password" name="Password" ></td>
-                <td><p id="PasswordError"></p></td>
+                <td><p id="PasswordError"class="error"></p></td>
             </tr>
             <tr>
                 <td><label for="email">Email:</label></td>
                 <td><input type="email" id="email" name="Email" ></td>
-                <td><p id="EmailError"></p></td>
+                <td><p id="EmailError"class="error"></p></td>
             </tr>
             <tr>
                 <td><label for="fullname">Full Name:</label></td>
                 <td><input type="text" id="fullname" name="Fullname" ></td>
-                <td><p id="FullnameError"></p></td>    
+                <td><p id="FullnameError"class="error"></p></td>    
             </tr>
             <tr>
                 <td><label for="Phone">Phone Number:</label></td>
                 <td><input type="tel" id="Phone" name="Phone" ></td>
-                <td><p id="PhoneError"></p><td>
+                <td><p id="PhoneError"class="error"></p><td>
             </tr>
             <tr>
                 <td><label for="Age">Age:</label></td>
                 <td><input type="number" id="Age" name="Age" ></td>
-                <td><p id="AgeError"></p></td>
+                <td><p id="AgeError"class="error"></p></td>
                 
             </tr>
             <tr>
@@ -105,12 +105,12 @@ if (isset($_GET['DeliveryUsername'])) {
                     <input type="radio" id="vehicleNo" name="Vehicle" value="no" >
                     <label for="vehicleNo">No</label>
                 </td>
-                <td><p id="VehicleError"></p></td>
+                <td><p id="VehicleError"class="error"></p></td>
             </tr>
             <tr>
                 <td><label for="CV">CV:</label></td>
                 <td><input type="file" id="CV" name="CV" accept=".pdf,.doc,.docx"></td>
-                <td><p id="CVError"></p></td>
+                <td><p id="CVError"class="error"></p></td>
             </tr>
             
             <tr>

@@ -69,27 +69,27 @@ if (isset($_GET['BuyerUsername'])) {
             <tr>
                 <td><label for="email">Email:</label></td>
                 <td><input type="email" id="email" name="Email" ></td>
-                <td><p id="EmailError"></p></td>
+                <td><p id="EmailError"class="error"></p></td>
             </tr>
             <tr>
                 <td><label for="password">Password:</label></td>
                 <td><input type="password" id="password" name="Password"></td>
-                <td><p id="PasswordError"></p></td>
+                <td><p id="PasswordError"class="error"></p></td>
             </tr>
             <tr>
                 <td><label for="fullName">Full Name:</label></td>
                 <td><input type="text" id="fullName" name="Fullname"></td>
-                <td><p id="FullnameError"></p></td>
+                <td><p id="FullnameError"class="error"></p></td>
             </tr>
             <tr>
                 <td><label for="phone">Phone Number:</label></td>
                 <td><input type="tel" id="phone" name="Phone" ></td>
-                <td><p id="PhoneError"></p></td>
+                <td><p id="PhoneError"class="error"></p></td>
             </tr>
             <tr>
                 <td><label for="dateofbirth">Date of Birth:</label></td>
                 <td><input type="date" id="dateofbirth" name="DateOfBirth"></td>
-                <td><p id="DOBError" ></p></td>
+                <td><p id="DOBError" class="error"></p></td>
             </tr>
             <tr>
             <tr>

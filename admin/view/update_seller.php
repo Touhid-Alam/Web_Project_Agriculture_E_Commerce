@@ -77,17 +77,17 @@ if (isset($_GET['SellerUsername'])) {
                 <tr>
                     <td><label for="password">Password:</label></td>
                     <td><input type="password" id="password" name="Password"></td>
-                    <td><p id="PasswordError"></p></td>
+                    <td><p id="PasswordError"class="error"></p></td>
                 </tr>
                 <tr>
                     <td><label for="email">Email:</label></td>
                     <td><input type="email" id="email" name="Email"></td>
-                    <td><p id="EmailError"></p></td>
+                    <td><p id="EmailError"class="error"></p></td>
                 </tr>
                 <tr>
                     <td><label for="businessName">Business Name:</label></td>
                     <td><input type="text" id="businessName" name="BusinessName"></td>
-                    <td><p id="BusinessNameError"></p></td>
+                    <td><p id="BusinessNameError"class="error"></p></td>
                 </tr>
                 <tr>
                     <td><label for="productType">Product Type:</label></td>
@@ -100,22 +100,22 @@ if (isset($_GET['SellerUsername'])) {
                         </select>
                         
                     </td>
-                    <td><p id="ProductTypeError"></p></td>
+                    <td><p id="ProductTypeError"class="error"></p></td>
                 </tr>
                 <tr>
                     <td><label for="fullName">Full Name:</label></td>
                     <td><input type="text" id="fullName" name="Fullname"></td>
-                    <td><p id="FullnameError"></p></td>
+                    <td><p id="FullnameError"class="error"></p></td>
                 </tr>
                 <tr>
                     <td><label for="phone">Phone Number:</label></td>
                     <td><input type="tel" id="phone" name="Phone"></td>
-                    <td><p id="PhoneError"></p>
+                    <td><p id="PhoneError"class="error"></p>
                 </tr>
                 <tr>
                     <td><label for="address">Address:</label></td>
                     <td><input type="text" id="address" name="Address"></td>
-                     <td><p id="AddressError"></p></td>
+                     <td><p id="AddressError"class="error"></p></td>
                 </tr>
                 <tr>
                     <td><label for="districts">District:</label></td>
@@ -134,7 +134,7 @@ if (isset($_GET['SellerUsername'])) {
                 <tr>
                     <td><label for="idProof">ID Proof:</label></td>
                     <td><input type="file" id="idProof" name="idProof"></td>
-                    <td><p id="NIDError"></p></td>
+                    <td><p id="NIDError"class="error"></p></td>
                 </tr>
                 <tr>
                     <td colspan="2"><button type="submit" name="update">Update Seller</button></td>
