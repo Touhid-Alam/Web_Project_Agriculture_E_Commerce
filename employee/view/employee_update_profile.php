@@ -28,7 +28,10 @@ $employeeDetails = $_SESSION['employeeDetails'];
     <div class="navbar">
         <a href="employee_profile.php">Profile</a>
         <a href="employee_orders.php">Orders</a>
-       
+        <div class="logout-container">
+            <form action="../control/employee_logout.php" method="POST">
+                <button type="submit" class="logout-button">Logout</button>
+            </form>
     </div>
 
     <div class="main-content">

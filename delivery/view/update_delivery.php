@@ -28,7 +28,7 @@ unset($_SESSION['error_message']); // Clear the error message after fetching it
     <div class="navbar">
         <a href="delivery_profile.php">Profile</a>
         <a href="delivery_orders.php">Orders</a>
-        <a href="delivery_logout.php">Logout</a>
+        <a href="../../layout/view/login.php">Logout</a>
     </div>
 
     <div class="main-content">
