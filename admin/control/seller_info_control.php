@@ -40,8 +40,7 @@ if (isset($_GET['SellerUsername'])) {
                          <td><a href='" .htmlspecialchars($row['NID']) . "' target='_blank'>View ID Proof</a></td>
                         <td>
                             <a href='../view/update_seller.php?SellerUsername=" . urlencode($row['SellerUsername']) . "'>Update</a> | 
-                            <a href='../control/delete_seller.php?SellerUsername=" . urlencode($row['SellerUsername']) . "'>Delete</a>|
-                            <a href='../view/Seller_product_info.php'>VIEW</a>
+                            <a href='../control/delete_seller.php?SellerUsername=" . urlencode($row['SellerUsername']) . "'>Delete</a>
                         
                             </td>
                          </tr>";
