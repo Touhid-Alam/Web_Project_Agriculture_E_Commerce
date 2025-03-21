@@ -3,11 +3,18 @@
 ## Project Overview
 
 The **E-Commerce Management System** is a comprehensive web application designed to manage multiple user roles, including Admin, Buyer, Seller, Delivery Personnel, and Employee. The system provides functionalities such as user authentication, profile management, product management, order management, and dynamic interactions using PHP, MySQL, HTML, CSS, and JavaScript.
+# Homepage
 ![image](https://github.com/user-attachments/assets/2e4c744d-62ea-4f5e-adb6-217b550d4e33)
 
 ---
 
-## Features
+## Login and Registration
+![image](https://github.com/user-attachments/assets/3bfc450a-3f82-46a6-8005-c57d53627bda)
+
+---
+
+![image](https://github.com/user-attachments/assets/2b43caf5-324c-4ac9-ac46-6e2c8b68e39c)
+
 
 ### Admin
 - Manage users (Buyers, Sellers, Employees, Delivery Personnel).
