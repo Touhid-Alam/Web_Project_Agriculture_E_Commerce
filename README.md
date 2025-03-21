@@ -113,7 +113,7 @@ c:/xampp/htdocs/Web_Project/
 
 1. Clone the repository into your local server directory:
    ```bash
-   git clone <repository-url> c:/xampp/htdocs/Web_Project
+   git clone <https://github.com/Touhid-Alam/Web_Project_Agriculture_E_Commerce/blob/main> c:/xampp/htdocs/Web_Project
    ```
 
 2. Start the XAMPP server and ensure Apache and MySQL are running.
