@@ -22,26 +22,41 @@ The **E-Commerce Management System** is a comprehensive web application designed
 - Update and delete user profiles.
 - Dashboard with quick access to all functionalities.
 
+# Admin Dashboard
+![image](https://github.com/user-attachments/assets/46f17014-295e-4bb2-85ec-beb3d4332842)
+
+
 ### Buyer
 - Register, log in, and manage profile.
 - Browse and search for products.
 - Add products to the cart and place orders.
 - View order history and manage account balance.
+# Buyer Dashboard
+![image](https://github.com/user-attachments/assets/9ffe7379-84e2-4285-a0c0-f7b2d37563bb)
 
 ### Seller
 - Add, edit, and delete products.
 - View product history and manage inventory.
 - Search for specific products.
 - Manage profile and account details.
+#Seller Dashboard
+![image](https://github.com/user-attachments/assets/8831a503-3183-4f3b-a03c-a2415ee82180)
+
 
 ### Delivery Personnel
 - View and update delivery profile.
 - Manage assigned orders and update delivery status.
 - Search for orders and deliveries.
+# Delivery Dashboard
+![image](https://github.com/user-attachments/assets/18d3942b-f703-49c8-84de-54200f89ac15)
+
 
 ### Employee
 - View and update employee profile.
 - Manage assigned tasks and work shifts.
+# Employee Dashboard
+![image](https://github.com/user-attachments/assets/8e83c5fe-4ee3-4713-9cc6-bb9803465bc1)
+
 
 ---
 
